@@ -24,8 +24,73 @@
     user-select: none;
 }
 
+<CODE_BLOCK>
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: 'Arial', sans-serif; /* Add a clear font */
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 120px)); /* Use minmax for responsiveness */
+    grid-template-rows: repeat(3, minmax(80px, 120px)); /* Use minmax for responsiveness */
+    gap: 10px; /* Increase gap for better spacing */
+    border: 5px solid #3498db; /* Add a border around the board */
+    border-radius: 10px; /* Rounded corners for the board */
+    background-color: #ecf0f1; /* Light background for the board */
+    padding: 10px; /* Padding inside the board */
+}
+
+.cell {
+    width: 100%; /* Make cells fill their grid area */
+    height: 100%; /* Make cells fill their grid area */
+    border: 3px solid #2c3e50; /* Darker border for cells */
+    border-radius: 5px; /* Rounded corners for cells */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em; /* Use relative units for font size */
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    background-color: #ffffff; /* White background for cells */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.cell:hover:not(.occupied) {
+    background-color: #bdc3c7; /* Gray background on hover for unoccupied cells */
+}
+
+.cell.occupied {
+    cursor: default; /* Change cursor for occupied cells */
+}
+
+.cell.occupied.X {
+    color: #e74c3c; /* Red color for X */
+}
+
+.cell.occupied.O {
+    color: #3498db; /* Blue color for O */
+}
+
 .game-status {
     margin-top: 20px;
-    font-size: 24px;
+    font-size: 1.5em; /* Use relative units */
     font-weight: bold;
+    color: #2c3e50; /* Dark color for status text */
+    min-height: 1.5em; /* Reserve space to prevent layout shifts */
 }
+
+/* Basic responsiveness */
+@media (max-width: 400px) {
+    .game-board {
+        grid-template-columns: repeat(3, minmax(60px, 90px));
+        grid-template-rows: repeat(3, minmax(60px, 90px));
+        gap: 5px;
+    }
+}
+
+</CODE_BLOCK>

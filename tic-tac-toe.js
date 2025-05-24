@@ -1,3 +1,4 @@
+<CODE_BLOCK>
 document.addEventListener('DOMContentLoaded', () => {
     const board = document.getElementById('game-board');
     const statusDisplay = document.getElementById('game-status');
@@ -94,3 +95,5 @@ document.addEventListener('DOMContentLoaded', () => {
         board.appendChild(cell);
     }
 });
+
+</CODE_BLOCK>
