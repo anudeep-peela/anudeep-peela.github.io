@@ -9,24 +9,22 @@ body {
     font-family: 'Roboto', sans-serif;
     background-image: url('background.png'); /* Adjust the path as needed */
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #333;
-    text-align: center; /* Center text for smaller screens */
+    text-align: center;
+    padding-top: 40px; /* Space from top for header */
 }
 
 .container {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    padding: 40px 30px; /* Extra top padding for breathing room */
     border-radius: 15px;
-    width: 60%;
-    max-width: 800px;
+    width: 70%;
+    max-width: 900px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     animation: fadeIn 1s ease-in-out;
-    margin: 80px auto; /* Added margin for spacing from top */
-    transform: translateY(0); /* Start at 0 position for animation */
-    opacity: 1; /* Set to visible */
+    margin: 0 auto 80px; /* Space below container */
+    transform: translateY(0);
+    opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -35,7 +33,7 @@ body {
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 0 10px;
     font-size: 2.5em;
     color: #000;
 }
@@ -43,6 +41,11 @@ header h1 {
 header p {
     font-size: 1.2em;
     margin-bottom: 20px;
+}
+
+.tagline {
+    margin-top: 10px;
+    color: #555;
 }
 
 nav {
@@ -98,5 +101,14 @@ h2 {
 
 .project h3 {
     margin-top: 0;
+}
+
+#contact a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
 }
 
