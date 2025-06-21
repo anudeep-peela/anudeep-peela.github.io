@@ -3,8 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     var allSections = document.querySelectorAll('.section');
     var about = document.getElementById('about');
     var contactBtn = document.querySelector('.contact-button');
+    var hero = document.querySelector('.hero');
+    var heroDisplay = hero ? hero.querySelector('.display') : null;
+    var slideDistance = 0;
     var lastScrollY = window.pageYOffset;
     var scrollDir = 'down';
+
+    function measureHero() {
+        if (heroDisplay) {
+            slideDistance = heroDisplay.getBoundingClientRect().width;
+        }
+    }
+
+    if (hero && heroDisplay) {
+        hero.classList.add('intro');
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                hero.classList.remove('intro');
+            });
+        });
+
+        heroDisplay.addEventListener('transitionend', function onEnd(e) {
+            if (e.propertyName === 'transform') {
+                heroDisplay.removeEventListener('transitionend', onEnd);
+                measureHero();
+            }
+        });
+    } else {
+        measureHero();
+    }
 
     window.addEventListener('scroll', function() {
         var newY = window.pageYOffset;

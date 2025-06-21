@@ -87,10 +87,16 @@ body {
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 calc(var(--space) * 2) 0;
+  transition: transform 0.6s ease-out;
+  transform: translateX(0);
 }
 
 .hero .display {
   font-size: var(--fs-display);
+}
+
+.hero.intro .display {
+  transform: translateX(-50vw);
 }
 
 h2 {
