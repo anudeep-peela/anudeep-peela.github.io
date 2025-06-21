@@ -93,6 +93,24 @@ body {
   font-size: var(--fs-display);
 }
 
+.hero .display,
+.hero .tagline {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.display {
+  position: relative;
+}
+
+.name-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--accent-blue);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+
 h2 {
   font-size: var(--fs-h2);
   line-height: 1.1;
@@ -149,7 +167,7 @@ h2 {
 .contact-button {
   display: block;
   width: fit-content;
-  margin-left: auto;
+  margin-top: calc(var(--space) * 2);
   padding: 1rem 2rem;
   border-radius: 8px;
   background: var(--accent-blue);
