@@ -40,6 +40,7 @@ function initVortex() {
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0); // transparent background
 
     // Environment map for refraction
     const envLoader = new THREE.CubeTextureLoader();
@@ -64,6 +65,7 @@ function initVortex() {
 
     const sphereGeo = new THREE.SphereGeometry(5, 128, 128);
     const glassSphere = new THREE.Mesh(sphereGeo, glassMaterial);
+    glassSphere.position.x = 5;
     scene.add(glassSphere);
 
     const vortexGeo = new THREE.SphereGeometry(4.9, 128, 128);
@@ -96,12 +98,14 @@ function initVortex() {
     });
 
     const vortex = new THREE.Mesh(vortexGeo, vortexMaterial);
+    vortex.position.x = 5;
     scene.add(vortex);
 
     // User interaction controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
     controls.enablePan = false;
+    controls.target.set(5, 0, 0);
 
     // Postprocessing passes
     const composer = new EffectComposer(renderer);
