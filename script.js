@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var allSections = document.querySelectorAll('.section');
     var about = document.getElementById('about');
     var contactBtn = document.querySelector('.contact-button');
-    var currentIndex = 0;
     var lastScrollY = window.pageYOffset;
     var scrollDir = 'down';
 
@@ -48,32 +47,26 @@ document.addEventListener('DOMContentLoaded', function() {
             section.classList.add('visible');
         });
     }
-
-    function gotoSection(index) {
-        if (index >= 0 && index < allSections.length) {
-            currentIndex = index;
-            allSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    var scrollTimeout;
-    window.addEventListener('wheel', function(e) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-            if (e.deltaY > 0) {
-                gotoSection(currentIndex + 1);
-            } else if (e.deltaY < 0) {
-                gotoSection(currentIndex - 1);
+    var adjustTimeout;
+    window.addEventListener("scroll", function() {
+        clearTimeout(adjustTimeout);
+        adjustTimeout = setTimeout(function() {
+            var viewportHeight = window.innerHeight;
+            var maxRatio = 0;
+            var target = null;
+            allSections.forEach(function(sec) {
+                var rect = sec.getBoundingClientRect();
+                var visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+                var ratio = Math.max(0, visible) / viewportHeight;
+                if (ratio > maxRatio) {
+                    maxRatio = ratio;
+                    target = sec;
+                }
+            });
+            if (target) {
+                target.scrollIntoView({behavior: "smooth"});
             }
-        }, 120);
-    }, { passive: true });
-
-    window.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowDown') {
-            gotoSection(currentIndex + 1);
-        } else if (e.key === 'ArrowUp') {
-            gotoSection(currentIndex - 1);
-        }
+        }, 100);
     });
 
     if (contactBtn) {
