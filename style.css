@@ -25,6 +25,12 @@ html, body {
   background: var(--primary);
   color: var(--primary-dark);
   line-height: 1.6;
+  height: 100%;
+}
+
+body {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
 .main-nav {
@@ -58,10 +64,15 @@ html, body {
   margin: 0 auto;
   padding: calc(var(--space) * 4);
   align-items: center;
+  scroll-snap-align: start;
 }
 
 .section.alt {
   background-color: var(--alt-light);
+}
+
+.section.full {
+  grid-template-columns: 1fr;
 }
 
 .section-content {
@@ -98,26 +109,71 @@ h2 {
   display: block;
 }
 
-.skills-list {
-  list-style: none;
-  padding: 0;
+.skill-bars {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: calc(var(--space) * 2);
 }
 
-.skills-list li,
-.project {
+.skill {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space));
+}
+
+.skill .bar {
+  flex: 1;
+  height: 8px;
+  background: var(--neutral-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill .progress {
+  height: 100%;
+  background: var(--accent-blue);
+}
+
+.skill .metric {
+  font-weight: 700;
+  width: 3ch;
+  text-align: right;
+}
+
+.project,
+.case-study {
   background: var(--primary);
   border-radius: 8px;
   padding: calc(var(--space) * 2);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-study:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: calc(var(--space) * 2);
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 1.5rem;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: var(--primary);
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.contact-button:hover {
+  transform: scale(1.05);
 }
 
 #contact a {
