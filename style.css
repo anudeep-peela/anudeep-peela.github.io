@@ -74,6 +74,9 @@ body {
 .section.full {
   grid-template-columns: 1fr;
 }
+.section.full .section-content {
+  max-width: none;
+}
 
 .section-content {
   max-width: 600px;
@@ -144,14 +147,14 @@ h2 {
 }
 
 .contact-button {
-  display: inline-block;
-  padding: 1.5rem;
-  border-radius: 50%;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  padding: 1rem 2rem;
+  border-radius: 8px;
   background: var(--accent-blue);
-  color: var(--primary);
+  color: var(--primary) !important;
   text-decoration: none;
-  position: relative;
-  float: right;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
@@ -160,15 +163,15 @@ h2 {
 }
 
 .contact-button.clicked {
-  background: var(--alt-dark);
+  background: var(--alt-light);
+  color: var(--primary-dark);
 }
-
-#contact a {
+#contact a:not(.contact-button) {
   color: var(--accent-blue);
   text-decoration: none;
 }
 
-#contact a:hover {
+#contact a:not(.contact-button):hover {
   text-decoration: underline;
 }
 
