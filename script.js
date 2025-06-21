@@ -14,13 +14,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function wrapLetters() {
         if (!heroDisplay) return;
-        var text = heroDisplay.textContent;
-        heroDisplay.innerHTML = '';
-        text.split('').forEach(function(ch) {
-            var span = document.createElement('span');
-            span.textContent = ch === ' ' ? '\u00A0' : ch;
-            heroDisplay.appendChild(span);
+        var html = heroDisplay.innerHTML;
+        var parts = html.split(/<br\s*\/?>(?:\n)?/i);
+        var frag = document.createDocumentFragment();
+        parts.forEach(function(part, idx) {
+            part.split('').forEach(function(ch) {
+                var span = document.createElement('span');
+                span.textContent = ch === ' ' ? '\u00A0' : ch;
+                frag.appendChild(span);
+            });
+            if (idx < parts.length - 1) {
+                frag.appendChild(document.createElement('br'));
+            }
         });
+        heroDisplay.innerHTML = '';
+        heroDisplay.appendChild(frag);
         heroLetters = Array.from(heroDisplay.querySelectorAll('span'));
     }
 
