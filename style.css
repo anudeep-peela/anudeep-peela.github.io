@@ -99,6 +99,16 @@ body {
   transform: translateX(-50vw);
 }
 
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .display span {
+  display: inline-block;
+  transition: color 0.2s linear;
+}
+
 h2 {
   font-size: var(--fs-h2);
   line-height: 1.1;
