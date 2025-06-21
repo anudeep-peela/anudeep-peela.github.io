@@ -109,6 +109,12 @@ body {
   transition: color 0.2s linear;
 }
 
+.hero .section-image img {
+  transition: transform 1s ease-out;
+  transform-origin: center center;
+  transform: scale(1);
+}
+
 h2 {
   font-size: var(--fs-h2);
   line-height: 1.1;

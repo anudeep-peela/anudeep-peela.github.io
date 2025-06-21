@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var heroImage = hero ? hero.querySelector('.section-image img') : null;
     var slideDistance = 0;
     var heroLetters = [];
+    var hasSlid = false;
     var lastScrollY = window.pageYOffset;
     var scrollDir = 'down';
 
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         heroDisplay.addEventListener('transitionend', function introEnd(e) {
             if (e.propertyName === 'transform') {
                 heroDisplay.removeEventListener('transitionend', introEnd);
-                startSlideAcross();
+                measureHero();
             }
         });
     } else {
@@ -49,9 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startSlideAcross() {
-        var finalOffset = heroImage.getBoundingClientRect().left - heroDisplay.getBoundingClientRect().left;
+        if (hasSlid) return;
+        hasSlid = true;
+        var displayRect = heroDisplay.getBoundingClientRect();
+        var finalOffset = window.innerWidth - displayRect.left + displayRect.width;
         heroDisplay.style.transition = 'transform 1s ease-out';
         heroDisplay.style.transform = 'translateX(' + finalOffset + 'px)';
+        heroImage.style.transition = 'transform 1s ease-out';
+        heroImage.style.transform = 'scale(0)';
         function updateColors() {
             var imgRect = heroImage.getBoundingClientRect();
             heroLetters.forEach(function(span) {
@@ -93,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (about) {
-            var aboutObserver = new IntersectionObserver(function(entries) {
+            var aboutObserver = new IntersectionObserver(function(entries, obs) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         if (scrollDir === 'down') {
@@ -103,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             about.classList.add('slide-left');
                             about.classList.remove('slide-right');
                         }
+                        startSlideAcross();
+                        obs.disconnect();
                     }
                 });
             }, { threshold: 0.6 });
