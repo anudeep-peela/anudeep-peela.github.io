@@ -78,6 +78,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function slideBack() {
+        if (!hasSlid) return;
+        hasSlid = false;
+        heroDisplay.style.transition = 'transform 1s ease-out';
+        heroDisplay.style.transform = 'translateX(0)';
+        heroImage.style.transition = 'transform 1s ease-out';
+        heroImage.style.transform = 'scale(1)';
+        function updateColors() {
+            var imgRect = heroImage.getBoundingClientRect();
+            heroLetters.forEach(function(span) {
+                var rect = span.getBoundingClientRect();
+                var overlap = rect.left < imgRect.right && rect.right > imgRect.left;
+                span.style.color = overlap ? 'var(--accent-blue)' : 'var(--primary-dark)';
+            });
+            animId = requestAnimationFrame(updateColors);
+        }
+        var animId = requestAnimationFrame(updateColors);
+        heroDisplay.addEventListener('transitionend', function backEnd(e) {
+            if (e.propertyName === 'transform') {
+                heroDisplay.removeEventListener('transitionend', backEnd);
+                cancelAnimationFrame(animId);
+                updateColors();
+                measureHero();
+            }
+        });
+    }
+
     window.addEventListener('scroll', function() {
         var newY = window.pageYOffset;
         scrollDir = newY > lastScrollY ? 'down' : 'up';
@@ -99,18 +126,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (about) {
-            var aboutObserver = new IntersectionObserver(function(entries, obs) {
+            var aboutObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         if (scrollDir === 'down') {
                             about.classList.add('slide-right');
                             about.classList.remove('slide-left');
-                        } else {
+                            startSlideAcross();
+                        }
+                    } else {
+                        if (scrollDir === 'up') {
                             about.classList.add('slide-left');
                             about.classList.remove('slide-right');
+                            slideBack();
                         }
-                        startSlideAcross();
-                        obs.disconnect();
                     }
                 });
             }, { threshold: 0.6 });
