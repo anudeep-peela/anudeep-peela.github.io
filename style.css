@@ -98,12 +98,17 @@ body {
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.hero.scrolled .display {
-  transform: translateX(50px);
+.display {
+  position: relative;
 }
 
-.hero.scrolled .tagline {
-  opacity: 0;
+.name-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--accent-blue);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
 }
 
 h2 {

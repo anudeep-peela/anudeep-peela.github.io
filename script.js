@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.hidden');
     var allSections = document.querySelectorAll('.section');
     var hero = document.getElementById('hero');
+    var heroDisplay = hero ? hero.querySelector('.display') : null;
+    var heroHighlight = hero ? hero.querySelector('.name-highlight') : null;
+    var heroImg = hero ? hero.querySelector('img') : null;
     var about = document.getElementById('about');
     var contactBtn = document.querySelector('.contact-button');
     var lastScrollY = window.pageYOffset;
@@ -28,16 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (hero) {
-            var heroObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (!entry.isIntersecting) {
-                        hero.classList.add('scrolled');
-                    } else {
-                        hero.classList.remove('scrolled');
-                    }
-                });
-            }, { threshold: 0.1 });
-            heroObserver.observe(hero);
+            window.addEventListener('scroll', updateHero);
+            window.addEventListener('resize', measureHero);
+            measureHero();
+            updateHero();
         }
         if (about) {
             window.addEventListener('scroll', updateAbout);
@@ -49,6 +46,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     var adjustTimeout;
+    var baseSlide = 0;
+    var slideDistance = 0;
+
+    function measureHero() {
+        if (!heroDisplay || !heroImg) return;
+        var textRect = heroDisplay.getBoundingClientRect();
+        var imgRect = heroImg.getBoundingClientRect();
+        baseSlide = 0; // initial transform is none
+        slideDistance = imgRect.left - textRect.left;
+    }
+
+    function updateHero() {
+        if (!heroDisplay || !heroImg || !heroHighlight) return;
+        var heroRect = hero.getBoundingClientRect();
+        var progress = Math.min(Math.max(-heroRect.top / heroRect.height, 0), 1);
+        var x = progress * slideDistance;
+        heroDisplay.style.transform = 'translateX(' + x + 'px)';
+        var tagline = hero.querySelector('.tagline');
+        if (tagline) tagline.style.opacity = 1 - progress;
+
+        var textRect = heroDisplay.getBoundingClientRect();
+        var imgRect = heroImg.getBoundingClientRect();
+        var leftClip = Math.max(imgRect.left - textRect.left, 0);
+        var rightClip = Math.max(textRect.right - imgRect.right, 0);
+        if (imgRect.right > textRect.left && imgRect.left < textRect.right) {
+            heroHighlight.style.clipPath = 'inset(0 ' + rightClip + 'px 0 ' + leftClip + 'px)';
+        } else {
+            heroHighlight.style.clipPath = 'inset(0 100% 0 0)';
+        }
+    }
+
     function updateAbout() {
         var rect = about.getBoundingClientRect();
         var windowHeight = window.innerHeight;
