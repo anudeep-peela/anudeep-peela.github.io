@@ -109,51 +109,32 @@ h2 {
   display: block;
 }
 
-.skill-bars {
+.skills-list,
+.projects {
+  list-style: none;
+  padding: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: calc(var(--space) * 2);
 }
 
-.skill {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--space));
-}
-
-.skill .bar {
-  flex: 1;
-  height: 8px;
-  background: var(--neutral-light);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.skill .progress {
-  height: 100%;
-  background: var(--accent-blue);
-}
-
-.skill .metric {
-  font-weight: 700;
-  width: 3ch;
-  text-align: right;
-}
-
+.skills-list li,
 .project,
 .case-study {
   background: var(--primary);
   border-radius: 8px;
   padding: calc(var(--space) * 2);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
 }
 
+.skills-list li:hover,
 .case-study:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .projects {
@@ -169,11 +150,17 @@ h2 {
   background: var(--accent-blue);
   color: var(--primary);
   text-decoration: none;
-  transition: transform 0.2s ease-in-out;
+  position: relative;
+  float: right;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .contact-button:hover {
   transform: scale(1.05);
+}
+
+.contact-button.clicked {
+  background: var(--alt-dark);
 }
 
 #contact a {
@@ -194,6 +181,24 @@ h2 {
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+#about.slide-right {
+  animation: slideRight 0.6s forwards;
+}
+
+#about.slide-left {
+  animation: slideLeft 0.6s forwards;
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 900px) {
