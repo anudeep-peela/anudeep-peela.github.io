@@ -93,6 +93,19 @@ body {
   font-size: var(--fs-display);
 }
 
+.hero .display,
+.hero .tagline {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.hero.scrolled .display {
+  transform: translateX(50px);
+}
+
+.hero.scrolled .tagline {
+  opacity: 0;
+}
+
 h2 {
   font-size: var(--fs-h2);
   line-height: 1.1;
@@ -149,7 +162,7 @@ h2 {
 .contact-button {
   display: block;
   width: fit-content;
-  margin-left: auto;
+  margin-top: calc(var(--space) * 2);
   padding: 1rem 2rem;
   border-radius: 8px;
   background: var(--accent-blue);

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.hidden');
     var allSections = document.querySelectorAll('.section');
+    var hero = document.getElementById('hero');
     var about = document.getElementById('about');
     var contactBtn = document.querySelector('.contact-button');
     var lastScrollY = window.pageYOffset;
@@ -26,21 +27,21 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(section);
         });
 
-        if (about) {
-            var aboutObserver = new IntersectionObserver(function(entries) {
+        if (hero) {
+            var heroObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        if (scrollDir === 'down') {
-                            about.classList.add('slide-right');
-                            about.classList.remove('slide-left');
-                        } else {
-                            about.classList.add('slide-left');
-                            about.classList.remove('slide-right');
-                        }
+                    if (!entry.isIntersecting) {
+                        hero.classList.add('scrolled');
+                    } else {
+                        hero.classList.remove('scrolled');
                     }
                 });
-            }, { threshold: 0.6 });
-            aboutObserver.observe(about);
+            }, { threshold: 0.1 });
+            heroObserver.observe(hero);
+        }
+        if (about) {
+            window.addEventListener('scroll', updateAbout);
+            updateAbout();
         }
     } else {
         sections.forEach(function(section) {
@@ -48,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     var adjustTimeout;
+    function updateAbout() {
+        var rect = about.getBoundingClientRect();
+        var windowHeight = window.innerHeight;
+        var progress = Math.min(Math.max((windowHeight - rect.top) / windowHeight, 0), 1);
+        var dirFactor = scrollDir === 'down' ? 1 : -1;
+        var offset = (1 - progress) * 40 * dirFactor;
+        about.style.transform = 'translateX(' + offset + 'px)';
+        about.style.opacity = progress;
+    }
     window.addEventListener("scroll", function() {
         clearTimeout(adjustTimeout);
         adjustTimeout = setTimeout(function() {
