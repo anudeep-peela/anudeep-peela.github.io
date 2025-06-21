@@ -1,168 +1,158 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: auto; /* Allow scrolling */
-    scroll-behavior: smooth; /* Smooth jump to anchors */
+:root {
+  --primary: #FFFFFF;
+  --primary-dark: #111111;
+  --accent-blue: #1017C2;
+  --neutral-mid: #474A4C;
+  --neutral-light: #9EA1AC;
+  --alt-dark: #45494C;
+  --alt-light: #D4D2D8;
+  --space: 8px;
+  --fs-display: 6rem;
+  --fs-h1: 3rem;
+  --fs-h2: 2rem;
+  --fs-body: 1rem;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-image: url('background.png'); /* Adjust the path as needed */
-    background-size: cover;
-    color: #333;
-    text-align: center;
-    padding-top: 60px; /* More space from top for header */
+* {
+  box-sizing: border-box;
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 40px 30px; /* Extra top padding for breathing room */
-    border-radius: 15px;
-    width: 70%;
-    max-width: 900px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    animation: fadeIn 1s ease-in-out;
-    margin: 0 auto 80px; /* Space below container */
-    transform: translateY(0);
-    opacity: 1;
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'PP Neue Montreal', sans-serif;
+  background: var(--primary);
+  color: var(--primary-dark);
+  line-height: 1.6;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+.main-nav {
+  position: fixed;
+  top: calc(var(--space) * 2);
+  right: calc(var(--space) * 2);
+  display: flex;
+  gap: calc(var(--space) * 2);
+  z-index: 1000;
 }
 
-header h1 {
-    margin: 0 0 10px;
-    font-size: 2.5em;
-    color: #000;
+.main-nav a {
+  padding: calc(var(--space)) calc(var(--space) * 2);
+  border-radius: 9999px;
+  border: 1px solid var(--neutral-mid);
+  color: var(--primary-dark);
+  text-decoration: none;
+  transition: background-color 200ms ease-in-out;
 }
 
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    margin: 0 auto 15px;
+.main-nav a:hover {
+  background-color: var(--neutral-light);
 }
 
-header p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.section {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 4);
+  align-items: center;
 }
 
-.tagline {
-    margin-top: 10px;
-    color: #555;
-    font-size: 1.1em;
+.section.alt {
+  background-color: var(--alt-light);
 }
 
-nav {
-    display: inline-block; /* Aligns nav items inline */
-    margin-bottom: 20px; /* Space below nav */
+.section-content {
+  max-width: 600px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #444;
-    font-size: 1em;
-    margin: 0 10px;
-    position: relative;
-    transition: color 0.3s ease;
-    display: inline-flex; /* Aligns icon with text */
-    align-items: center; /* Centers icon vertically */
+.display {
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 calc(var(--space) * 2) 0;
 }
 
-nav a i {
-    margin-right: 8px; /* Adds a small space between icon and text */
-    width: 20px; /* Set width for icons */
-    text-align: center; /* Ensure icons are centered */
-}
-
-nav a:hover {
-    color: #000;
-}
-
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 2px;
-    background: #000;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-section {
-    margin: 40px 0;
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-
-section:hover {
-    transform: scale(1.02);
+.hero .display {
+  font-size: var(--fs-display);
 }
 
 h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #222;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 calc(var(--space) * 2) 0;
 }
 
-.skills-list, .projects {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+.tagline {
+  font-size: var(--fs-body);
+  color: var(--neutral-mid);
 }
 
-.skills-list li, .project {
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.profile-photo,
+.section-image img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
 }
 
-.skills-list li:hover, .project:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: calc(var(--space) * 2);
 }
 
-.project h3 {
-    margin-top: 0;
+.skills-list li,
+.project {
+  background: var(--primary);
+  border-radius: 8px;
+  padding: calc(var(--space) * 2);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: calc(var(--space) * 2);
 }
 
 #contact a {
-    color: #0066cc;
-    text-decoration: none;
+  color: var(--accent-blue);
+  text-decoration: none;
 }
 
 #contact a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Scroll-in animations */
 .hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
+  .section-image {
+    order: -1;
+  }
+
+  .main-nav {
+    position: static;
+    justify-content: center;
+    margin: calc(var(--space) * 2) 0;
+  }
+}
