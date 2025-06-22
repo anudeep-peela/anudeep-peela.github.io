@@ -134,6 +134,15 @@ h2 {
   display: block;
 }
 
+.skills-list li i {
+  margin-right: 0.5rem;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+}
+
 .skills-list,
 .projects {
   list-style: none;
