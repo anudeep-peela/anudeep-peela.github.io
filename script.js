@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var hero = document.querySelector('.hero');
     var heroDisplay = hero ? hero.querySelector('.display') : null;
     var heroImage = hero ? hero.querySelector('.section-image img') : null;
+    var portfolioCarousel = document.querySelector('.portfolio-carousel');
+    var contactForm = document.querySelector('.contact-form');
     var slideDistance = 0;
     var heroLetters = [];
     var hasSlid = false;
@@ -195,6 +197,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         contactBtn.addEventListener('mouseup', function() {
             contactBtn.classList.remove('clicked');
+        });
+    }
+
+    if (portfolioCarousel) {
+        var cards = portfolioCarousel.querySelectorAll('.project-card');
+        var activeIndex = 0;
+
+        function highlightActive() {
+            var center = portfolioCarousel.scrollLeft + portfolioCarousel.clientWidth / 2;
+            var closest = 0;
+            var minDist = Infinity;
+            cards.forEach(function(card, i) {
+                var rect = card.getBoundingClientRect();
+                var cardCenter = rect.left + rect.width / 2 + portfolioCarousel.scrollLeft - portfolioCarousel.getBoundingClientRect().left;
+                var dist = Math.abs(cardCenter - center);
+                if (dist < minDist) {
+                    minDist = dist;
+                    closest = i;
+                }
+            });
+            activeIndex = closest;
+            cards.forEach(function(card, i) {
+                if (i === activeIndex) card.classList.add('active');
+                else card.classList.remove('active');
+            });
+        }
+
+        function autoRotate() {
+            activeIndex = (activeIndex + 1) % cards.length;
+            var target = cards[activeIndex];
+            portfolioCarousel.scrollTo({
+                left: target.offsetLeft - (portfolioCarousel.clientWidth - target.clientWidth) / 2,
+                behavior: 'smooth'
+            });
+            highlightActive();
+        }
+
+        highlightActive();
+        var rotateId = setInterval(autoRotate, 5000);
+        portfolioCarousel.addEventListener('scroll', function() {
+            highlightActive();
+        });
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(ev) {
+            ev.preventDefault();
+            var name = contactForm.querySelector('#name').value;
+            var email = contactForm.querySelector('#email').value;
+            var message = contactForm.querySelector('#message').value;
+            var mail = 'mailto:anudeep.peela@example.com?subject=Portfolio%20Contact&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
+            window.location.href = mail;
         });
     }
 });
