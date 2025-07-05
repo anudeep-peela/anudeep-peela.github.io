@@ -1,6 +1,27 @@
+var allSections;
+function getClosestSection(list) {
+    var sections = list || allSections || [];
+    var closest = 0;
+    var minDist = Infinity;
+    sections.forEach(function(sec, idx) {
+        var rect = sec.getBoundingClientRect();
+        var dist = Math.abs(rect.top);
+        if (dist < minDist) {
+            minDist = dist;
+            closest = idx;
+        }
+    });
+    return closest;
+}
+
+if (typeof module !== 'undefined') {
+    module.exports.getClosestSection = getClosestSection;
+}
+
+if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.hidden');
-    var allSections = document.querySelectorAll('.section');
+    allSections = document.querySelectorAll('.section');
     var about = document.getElementById('about');
     var contactBtn = document.querySelector('.contact-button');
     var hero = document.querySelector('.hero');
@@ -13,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var hasSlid = false;
     var lastScrollY = window.pageYOffset;
     var scrollDir = 'down';
+    var currentSectionIndex = 0;
+    var snapTimer;
 
     function wrapLetters() {
         if (!heroDisplay) return;
@@ -161,6 +184,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function snapToSection() {
+        var targetIndex = getClosestSection();
+        if (targetIndex !== currentSectionIndex) {
+            currentSectionIndex = targetIndex;
+            allSections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        clearTimeout(snapTimer);
+        snapTimer = setTimeout(snapToSection, 120);
+    });
+
     if (contactBtn) {
         contactBtn.addEventListener('mousemove', function(ev) {
             var rect = contactBtn.getBoundingClientRect();
@@ -231,3 +267,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+}

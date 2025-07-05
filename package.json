@@ -1,0 +1,16 @@
+{
+  "name": "anudeep-peela.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "node scroll.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jsdom": "^26.1.0"
+  }
+}
