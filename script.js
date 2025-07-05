@@ -271,7 +271,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactSection && window.VANTA && window.VANTA.BIRDS) {
         VANTA.BIRDS({
             el: contactSection,
-            backgroundColor: 0x3730a3
+            backgroundColor: 0x829bff,
+            backgroundAlpha: 1,
+            color1: 0xff0000,
+            color2: 0x00d1ff,
+            colorMode: "varianceGradient",
+            quantity: 5,
+            birdSize: 1,
+            wingSpan: 30,
+            speedLimit: 5,
+            separation: 20,
+            alignment: 20,
+            cohesion: 20
         });
     }
 });
