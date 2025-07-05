@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var heroImage = hero ? hero.querySelector('.section-image img') : null;
     var portfolioCarousel = document.querySelector('.portfolio-carousel');
     var contactForm = document.querySelector('.contact-form');
+    var contactSection = document.getElementById('contact');
     var slideDistance = 0;
     var heroLetters = [];
     var hasSlid = false;
@@ -264,6 +265,24 @@ document.addEventListener('DOMContentLoaded', function() {
             var message = contactForm.querySelector('#message').value;
             var mail = 'mailto:anudeep.peela@example.com?subject=Portfolio%20Contact&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
             window.location.href = mail;
+        });
+    }
+
+    if (contactSection && window.VANTA && window.VANTA.BIRDS) {
+        VANTA.BIRDS({
+            el: contactSection,
+            backgroundColor: 0x829bff,
+            backgroundAlpha: 1,
+            color1: 0xff0000,
+            color2: 0x00d1ff,
+            colorMode: "varianceGradient",
+            quantity: 5,
+            birdSize: 1,
+            wingSpan: 30,
+            speedLimit: 5,
+            separation: 20,
+            alignment: 20,
+            cohesion: 20
         });
     }
 });
