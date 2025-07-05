@@ -554,7 +554,8 @@ h2 {
 
 /* Contact form */
 .contact-section {
-  background: var(--ds-primary-dark);
+  position: relative;
+  overflow: hidden;
   color: var(--ds-text-on-primary);
 }
 
