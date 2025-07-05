@@ -180,6 +180,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }, { threshold: 0.6 });
             aboutObserver.observe(about);
         }
+        var mainNav = document.querySelector(".main-nav");
+        if (mainNav && interestsSection) {
+            var navObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        mainNav.classList.add("white");
+                    } else {
+                        mainNav.classList.remove("white");
+                    }
+                });
+            }, { threshold: 0.6 });
+            navObserver.observe(interestsSection);
+        }
+
     } else {
         sections.forEach(function(section) {
             section.classList.add('visible');

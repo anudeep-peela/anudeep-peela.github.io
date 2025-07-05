@@ -102,6 +102,15 @@ body {
 .main-nav a:hover {
   background-color: var(--neutral-light);
 }
+.main-nav.white a {
+  color: #fff;
+  border-color: #fff;
+}
+
+.main-nav.white a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 .section {
   min-height: 100vh;
@@ -371,6 +380,7 @@ h2 {
 }
 
 .interests-section {
+  place-items: center;
   background: #23153c;
   color: var(--ds-text-on-primary);
   text-align: center;
@@ -379,6 +389,10 @@ h2 {
 }
 
 .interests-section .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: var(--ds-container-max-width);
   margin-inline: auto;
 }
