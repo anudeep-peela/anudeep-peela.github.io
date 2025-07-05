@@ -8,10 +8,10 @@
   --alt-dark: #45494C;
   --alt-light: #D4D2D8;
   --space: 8px;
-  --fs-display: 6rem;
-  --fs-h1: 3rem;
-  --fs-h2: 2rem;
-  --fs-body: 1rem;
+  --fs-display: clamp(2.5rem, 8vw + 1rem, 6rem);
+  --fs-h1: clamp(1.75rem, 4vw + 0.5rem, 3rem);
+  --fs-h2: clamp(1.25rem, 3vw + 0.5rem, 2rem);
+  --fs-body: clamp(0.875rem, 2vw + 0.25rem, 1rem);
 
   /* Design system tokens */
   --ds-primary: #5C6AC4;
@@ -30,10 +30,10 @@
   --ds-radius-sm: 0.5rem;
   --ds-radius-md: 0.75rem;
   --ds-radius-lg: 1rem;
-  --ds-section-padding: 6rem;
+  --ds-section-padding: clamp(3rem, 8vw, 6rem);
   --ds-card-padding: 2rem;
   --ds-card-gap: 2rem;
-  --ds-container-max-width: 80rem;
+  --ds-container-max-width: min(90rem, 90vw);
   --ds-gutter-sm: 1rem;
   --ds-gutter-lg: 2rem;
   --ds-transition-default: all 0.3s ease;
@@ -57,6 +57,12 @@
 
 * {
   box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 html, body {
@@ -102,11 +108,12 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  max-width: var(--ds-container-max-width);
   margin: 0 auto;
   padding: calc(var(--space) * 4);
   align-items: center;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section.alt {
@@ -285,12 +292,33 @@ h2 {
   }
 }
 
+@media (max-width: 600px) {
+  .main-nav {
+    flex-wrap: wrap;
+    gap: var(--ds-gutter-sm);
+  }
+
+  .main-nav a {
+    padding: calc(var(--space) / 2) var(--space);
+    font-size: 0.875rem;
+  }
+
+  .section {
+    padding: calc(var(--space) * 2);
+    gap: var(--space);
+  }
+
+  .portfolio-carousel .project-card {
+    flex-basis: 100%;
+  }
+}
+
 /* Design system layouts */
 .ds-section {
   padding-block: var(--ds-section-padding);
   display: block;
   grid-template-columns: none;
-  min-height: auto;
+  min-height: 100vh;
   max-width: none;
   margin: 0;
 }
