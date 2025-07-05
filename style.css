@@ -371,8 +371,11 @@ h2 {
 }
 
 .interests-section {
-  background: var(--ds-surface);
+  background: #23153c;
+  color: var(--ds-text-on-primary);
   text-align: center;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .interests-section .container {
@@ -541,13 +544,13 @@ h2 {
   font-size: var(--ds-h3-size);
   line-height: var(--ds-h3-line);
   font-weight: var(--ds-h3-weight);
-  color: var(--ds-text-primary);
+  color: inherit;
 }
 
 .interests-section .section-header p {
   font-size: var(--ds-body-md-size);
   line-height: var(--ds-body-md-line);
-  color: var(--ds-text-secondary);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 40rem;
   margin-inline: auto;
 }

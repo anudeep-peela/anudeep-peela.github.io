@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var portfolioCarousel = document.querySelector('.portfolio-carousel');
     var contactForm = document.querySelector('.contact-form');
     var contactSection = document.getElementById('contact');
+    var interestsSection = document.getElementById('interests');
     var slideDistance = 0;
     var heroLetters = [];
     var hasSlid = false;
@@ -283,6 +284,25 @@ document.addEventListener('DOMContentLoaded', function() {
             separation: 20,
             alignment: 20,
             cohesion: 20
+        });
+    }
+
+    if (interestsSection && window.VANTA && window.VANTA.NET) {
+        VANTA.NET({
+            el: interestsSection,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xff3f81,
+            backgroundColor: 0x23153c,
+            points: 10.00,
+            maxDistance: 20.00,
+            spacing: 15.00,
+            showDots: true
         });
     }
 });
