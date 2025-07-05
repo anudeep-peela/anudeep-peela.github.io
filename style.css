@@ -108,11 +108,12 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  max-width: var(--ds-container-max-width);
   margin: 0 auto;
   padding: calc(var(--space) * 4);
   align-items: center;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section.alt {
@@ -317,7 +318,7 @@ h2 {
   padding-block: var(--ds-section-padding);
   display: block;
   grid-template-columns: none;
-  min-height: auto;
+  min-height: 100vh;
   max-width: none;
   margin: 0;
 }

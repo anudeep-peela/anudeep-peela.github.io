@@ -160,27 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
             section.classList.add('visible');
         });
     }
-    var adjustTimeout;
-    window.addEventListener("scroll", function() {
-        clearTimeout(adjustTimeout);
-        adjustTimeout = setTimeout(function() {
-            var viewportHeight = window.innerHeight;
-            var maxRatio = 0;
-            var target = null;
-            allSections.forEach(function(sec) {
-                var rect = sec.getBoundingClientRect();
-                var visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-                var ratio = Math.max(0, visible) / viewportHeight;
-                if (ratio > maxRatio) {
-                    maxRatio = ratio;
-                    target = sec;
-                }
-            });
-            if (target) {
-                target.scrollIntoView({behavior: "smooth"});
-            }
-        }, 100);
-    });
 
     if (contactBtn) {
         contactBtn.addEventListener('mousemove', function(ev) {
