@@ -275,10 +275,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(ev) {
             ev.preventDefault();
-            var name = contactForm.querySelector('#name').value;
-            var email = contactForm.querySelector('#email').value;
-            var message = contactForm.querySelector('#message').value;
-            var mail = 'mailto:anudeep.peela@example.com?subject=Portfolio%20Contact&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
+            var name = contactForm.querySelector('#name').value.trim();
+            var email = contactForm.querySelector('#email').value.trim();
+            var message = contactForm.querySelector('#message').value.trim();
+            if (!name || !email || !message) {
+                alert('Please fill out all fields.');
+                return;
+            }
+            var mail = 'mailto:anudeeppeela9@gmail.com?subject=Portfolio%20Contact&body=' + encodeURIComponent(message + '\n\nFrom: ' + name + ' <' + email + '>');
             window.location.href = mail;
         });
     }
