@@ -640,11 +640,30 @@ p {
 
   .hero-inner {
     grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero-meta {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .portrait-card {
+    width: 100%;
     max-width: 430px;
     order: -1;
+    margin-inline: auto;
   }
 
   h1 {
