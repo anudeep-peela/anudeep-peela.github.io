@@ -725,7 +725,10 @@ p {
 }
 
 .offduty-card {
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--radius);
   background: var(--surface);
@@ -735,6 +738,36 @@ p {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.offduty-card.text-only {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.offduty-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.offduty-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offduty-card:hover .offduty-frame img {
+  transform: scale(1.04);
+}
+
+.offduty-content {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .offduty-card:hover {
@@ -752,12 +785,12 @@ p {
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .offduty-card h3 {
   margin: 0 0 0.85rem;
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
   font-weight: 850;
   color: var(--ink);
 }
@@ -765,6 +798,6 @@ p {
 .offduty-card p {
   margin: 0;
   font-size: 0.94rem;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--ink-2);
 }
