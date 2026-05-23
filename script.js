@@ -58,6 +58,18 @@ document.addEventListener('DOMContentLoaded', function() {
             var activeLink = document.querySelector('.main-nav a[href="#' + closestSec.id + '"]');
             if (activeLink) {
                 activeLink.classList.add('active');
+
+                // Smoothly center the active tab horizontally inside the mobile floating navigation bubble
+                var nav = document.querySelector('.main-nav');
+                if (nav && window.innerWidth <= 980) {
+                    var offsetLeft = activeLink.offsetLeft;
+                    var width = activeLink.clientWidth;
+                    var navWidth = nav.clientWidth;
+                    nav.scrollTo({
+                        left: offsetLeft - (navWidth / 2) + (width / 2),
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
     }
