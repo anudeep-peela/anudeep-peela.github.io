@@ -370,7 +370,7 @@ p {
 }
 
 .experience-section {
-  background: linear-gradient(180deg, transparent 0, rgba(255, 254, 250, 0.48) 14%, rgba(255, 254, 250, 0.48) 88%, transparent 100%);
+  background: transparent;
 }
 
 .timeline {

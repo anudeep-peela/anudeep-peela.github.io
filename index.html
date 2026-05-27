@@ -173,7 +173,7 @@
                 <h2 id="work-title">Project stories with technical and business signal.</h2>
             </div>
             <div class="case-grid">
-                <!-- Single Focused Case Study: Engine Parts Allocation -->
+                <!-- Single Focused Case Study: Engine Parts Allocation (Client-Safe, High-Level) -->
                 <article class="case-card" id="case-1" tabindex="0" role="button" aria-expanded="false">
                     <div class="case-header">
                         <div class="case-header-left">
@@ -181,17 +181,17 @@
                             <h3>Engine Parts Allocation &amp; Layout Optimization</h3>
                             <div class="case-stack">
                                 <span>Python</span>
-                                <span>Ray</span>
-                                <span>Genetic Algorithms</span>
-                                <span>Catia CAD</span>
+                                <span>Optimization Algorithms</span>
+                                <span>CAD Systems</span>
                                 <span>3D Geometry</span>
                                 <span>Heuristics</span>
+                                <span>Distributed Compute</span>
                             </div>
                         </div>
                         <div class="case-header-right">
                             <div class="case-metric-pill">
-                                <span class="metric-val">Ray Scale</span>
-                                <span class="metric-desc">Catia CAD MVP</span>
+                                <span class="metric-val">CAD Automation</span>
+                                <span class="metric-desc">Layout Optimization</span>
                             </div>
                             <button class="case-expand-btn" aria-label="Expand Case Study">
                                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
@@ -201,39 +201,38 @@
                     
                     <div class="case-body" aria-hidden="true">
                         <div class="case-body-inner">
-                            <p class="case-intro">Helped largest automobile client in building their next-gen engines by optimizing engine parts allocation and piping. Developed a generalized automatic end-to-end layout optimization MVP integrated directly into the client’s CAD workstream.</p>
+                            <p class="case-intro">Helped one of the largest automobile clients in building their next-gen engines by optimizing engine parts allocation and piping. Developed an MVP for generalized automatic end-to-end layout optimization to be integrated into the client's workstream.</p>
                             <div class="case-details-grid">
                                 <div class="case-detail-col">
-                                    <h4>Problem &amp; Aim</h4>
-                                    <p>The primary aim was to develop an AI/ML-based design layout optimization tool. This tool optimizes the arrangement and piping of various mechanical components in a given space, ensuring that packaging constraints are met and the layout is volume-efficient.</p>
+                                    <h4>Aim &amp; Problem</h4>
+                                    <p>The primary aim of the project was to develop a design layout optimization tool. This tool is intended to optimize the arrangement and piping of various mechanical components in a given space, ensuring that spatial constraints are met and layouts are highly efficient in terms of volume.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Context</h4>
-                                    <p>Physical engine design is highly constrained. We aimed to automate the packaging optimization of layouts and pipe routing, converting highly manual design processes into a scalable digital pipeline.</p>
+                                    <p>Partnered with one of the largest global automotive manufacturers to optimize mechanical packaging layouts, converting manual design iterations into highly automated pipelines.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Approach</h4>
-                                    <p>Classified the layout challenge as an NP-Hard search problem. We limited the solution space by constraining part movements and fixing each part sequentially before adding new ones, performing layouts in heuristics-driven test and learn loops.</p>
+                                    <p>Formulated layout optimization as a constrained spatial search problem. We limited the solution space by iteratively constraining part movements and fixing components sequentially to test and learn rapidly.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Technical Choices</h4>
-                                    <p><strong>Genetic Algorithm:</strong> Smartly determines x,y,z coordinates and rotation along x,y,z for all parts, using cost function logic to reinforce potential solutions.
-                                    <br><strong>Heuristics:</strong> Incorporated intuitve order arranging rules from expert designers to find optimal layouts faster.
-                                    <br><strong>Cost Function:</strong> Balances pipe cost and volume, adjusting weights dynamically based on experimental data.
-                                    <br><strong>Piping Algorithms:</strong> Developed fast and robust routing algorithms to automatically connect pipes while avoiding 3D obstacles.
-                                    <br><strong>Ray Parallelism:</strong> Code runs on personal laptops and distributed cloud nodes, using Ray for distributed parallel computing.
-                                    <br><strong>Pre/Post Processing:</strong> Includes object simplification, helper objects, data cleanup, and automated resolution recovery, exporting native .stl files directly into Catia CAD software.</p>
+                                    <p><strong>Algorithmic Search:</strong> Used optimization algorithms (such as genetic algorithms and heuristic methods) to intelligently determine coordinates and rotations for all parts, guided by cost functions to reinforce potential solutions.
+                                    <br><strong>Heuristics:</strong> Incorporated intuitive layout rules from expert designers to arrive at feasible arrangements faster.
+                                    <br><strong>Piping Algorithms:</strong> Developed routing algorithms to automatically connect pipes while avoiding spatial obstacles.
+                                    <br><strong>Compute Scalability:</strong> Structured the pipeline to run on both personal laptops and distributed cloud compute environments for parallel execution.
+                                    <br><strong>CAD Integration:</strong> Integrated automated pre- and post-processing tools to clean up data and enable import/export support with standard CAD software (such as Catia).</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Impact</h4>
-                                    <p><strong>Improved Design Quality &amp; Speed:</strong> Fast development times with agile evaluation of complex packaging layout variations.
-                                    <br><strong>Cost &amp; Time Savings:</strong> Automated layout experiments with minimal programming knowledge, saving manual engineering hours.
-                                    <br><strong>Flexibility:</strong> Config files act as a simple communication medium, allowing mechanical designers to adjust parameters without writing Python code.
-                                    <br><strong>Seamless Tool Integration:</strong> Effortless CAD file import/export via native .stl support, facilitating collaborative engineering workstreams.</p>
+                                    <p><strong>Efficiency &amp; Agility:</strong> Allowed for faster development times and the evaluation of more design variations in a highly agile manner.
+                                    <br><strong>Design Feasibility:</strong> Incorporating domain expertise and heuristics from designers ensured that layouts were highly optimized and practical.
+                                    <br><strong>User-Friendliness:</strong> Configuration files act as an easy interface for parameters, allowing designers to run layouts without programming knowledge.
+                                    <br><strong>Tool Integration:</strong> Seamless integration with CAD software facilitates collaboration and further design refinement across departments.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>What I Learned</h4>
-                                    <p>Automating mechanical parts layout requires balancing mathematical search algorithms (Genetic Algorithms, NP-Hard solvers) with designer intuition. Config-driven interfaces are key to achieving user-friendliness and trust with domain engineers.</p>
+                                    <p>Automating complex physical layouts requires combining mathematical search methods with flexible configuration interfaces that respect mechanical designers' real-world workflows and intuition.</p>
                                 </div>
                             </div>
                         </div>
