@@ -173,23 +173,25 @@
                 <h2 id="work-title">Project stories with technical and business signal.</h2>
             </div>
             <div class="case-grid">
-                <!-- Case Study 1 -->
+                <!-- Single Focused Case Study: Engine Parts Allocation -->
                 <article class="case-card" id="case-1" tabindex="0" role="button" aria-expanded="false">
                     <div class="case-header">
                         <div class="case-header-left">
-                            <span class="case-kicker">Generative AI &amp; Intelligent Agents</span>
-                            <h3>Intelligent AI Agents &amp; Cognitive Search</h3>
+                            <span class="case-kicker">Design Optimization &amp; CAD Automation</span>
+                            <h3>Engine Parts Allocation &amp; Layout Optimization</h3>
                             <div class="case-stack">
-                                <span>OpenAI Agent SDK</span>
-                                <span>LangChain</span>
-                                <span>Hybrid Search</span>
-                                <span>RAG</span>
+                                <span>Python</span>
+                                <span>Ray</span>
+                                <span>Genetic Algorithms</span>
+                                <span>Catia CAD</span>
+                                <span>3D Geometry</span>
+                                <span>Heuristics</span>
                             </div>
                         </div>
                         <div class="case-header-right">
                             <div class="case-metric-pill">
-                                <span class="metric-val">90% Faster</span>
-                                <span class="metric-desc">Reviews &bull; 96% Acc.</span>
+                                <span class="metric-val">Ray Scale</span>
+                                <span class="metric-desc">Catia CAD MVP</span>
                             </div>
                             <button class="case-expand-btn" aria-label="Expand Case Study">
                                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
@@ -199,147 +201,39 @@
                     
                     <div class="case-body" aria-hidden="true">
                         <div class="case-body-inner">
-                            <p class="case-intro">Designed and deployed production-grade RAG and agentic workflows, featuring a hybrid search co-pilot for pharmaceutical compliance audits and a multi-agent automated cash-reconciliation engine.</p>
+                            <p class="case-intro">Helped largest automobile client in building their next-gen engines by optimizing engine parts allocation and piping. Developed a generalized automatic end-to-end layout optimization MVP integrated directly into the client’s CAD workstream.</p>
                             <div class="case-details-grid">
                                 <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>Regulatory compliance audits for pharmaceutical processes required manual review of thousands of unstructured, highly technical documents. This process took days per audit, was prone to human oversight, and carried severe regulatory compliance risks.</p>
+                                    <h4>Problem &amp; Aim</h4>
+                                    <p>The primary aim was to develop an AI/ML-based design layout optimization tool. This tool optimizes the arrangement and piping of various mechanical components in a given space, ensuring that packaging constraints are met and the layout is volume-efficient.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Context</h4>
-                                    <p>The pharmaceutical industry operates under strict regulatory guidelines (FDA, EMA). Auditing requires cross-referencing standard operating procedures (SOPs), safety data sheets, and batch records against global regulatory frameworks.</p>
+                                    <p>Physical engine design is highly constrained. We aimed to automate the packaging optimization of layouts and pipe routing, converting highly manual design processes into a scalable digital pipeline.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Approach</h4>
-                                    <p>Led a team to build an intelligent, auditor-in-the-loop co-pilot. We designed a dual-engine system: a hybrid search engine to retrieve documents with high precision, and a multi-agent system utilizing the OpenAI Agent SDK to cross-reference and highlight discrepancies.</p>
+                                    <p>Classified the layout challenge as an NP-Hard search problem. We limited the solution space by constraining part movements and fixing each part sequentially before adding new ones, performing layouts in heuristics-driven test and learn loops.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Technical Choices</h4>
-                                    <p>Combining BM25 keyword matching with dense vector embeddings (OpenAI <code>text-embedding-3-large</code>) achieved 96% retrieval accuracy, resolving vector search's failure with exact drug codes and batch numbers. Used LangChain's LangGraph and Azure functions to build self-correcting agent chains that iteratively refine search queries and self-evaluate retrieved context before presenting it to human auditors.</p>
+                                    <p><strong>Genetic Algorithm:</strong> Smartly determines x,y,z coordinates and rotation along x,y,z for all parts, using cost function logic to reinforce potential solutions.
+                                    <br><strong>Heuristics:</strong> Incorporated intuitve order arranging rules from expert designers to find optimal layouts faster.
+                                    <br><strong>Cost Function:</strong> Balances pipe cost and volume, adjusting weights dynamically based on experimental data.
+                                    <br><strong>Piping Algorithms:</strong> Developed fast and robust routing algorithms to automatically connect pipes while avoiding 3D obstacles.
+                                    <br><strong>Ray Parallelism:</strong> Code runs on personal laptops and distributed cloud nodes, using Ray for distributed parallel computing.
+                                    <br><strong>Pre/Post Processing:</strong> Includes object simplification, helper objects, data cleanup, and automated resolution recovery, exporting native .stl files directly into Catia CAD software.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>Impact</h4>
-                                    <p>Reduced regulatory audit preparation and compliance review times by 90% (from 4 days to under 4 hours) with an estimated annual cost savings of $6.3M across three manufacturing plants.</p>
+                                    <p><strong>Improved Design Quality &amp; Speed:</strong> Fast development times with agile evaluation of complex packaging layout variations.
+                                    <br><strong>Cost &amp; Time Savings:</strong> Automated layout experiments with minimal programming knowledge, saving manual engineering hours.
+                                    <br><strong>Flexibility:</strong> Config files act as a simple communication medium, allowing mechanical designers to adjust parameters without writing Python code.
+                                    <br><strong>Seamless Tool Integration:</strong> Effortless CAD file import/export via native .stl support, facilitating collaborative engineering workstreams.</p>
                                 </div>
                                 <div class="case-detail-col">
                                     <h4>What I Learned</h4>
-                                    <p>Productionizing GenAI requires tight human-in-the-loop validation, strict boundary conditions for LLM agents, and robust evaluation harnesses rather than relying on qualitative "vibe checks."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Case Study 2 -->
-                <article class="case-card" id="case-2" tabindex="0" role="button" aria-expanded="false">
-                    <div class="case-header">
-                        <div class="case-header-left">
-                            <span class="case-kicker">Predictive Modeling &amp; Analytics</span>
-                            <h3>Predictive Modeling &amp; Pricing Optimization</h3>
-                            <div class="case-stack">
-                                <span>XGBoost</span>
-                                <span>Customer Clustering</span>
-                                <span>Transformers</span>
-                                <span>NLP</span>
-                            </div>
-                        </div>
-                        <div class="case-header-right">
-                            <div class="case-metric-pill">
-                                <span class="metric-val">+$27M</span>
-                                <span class="metric-desc">Annualized Rev. &bull; $5M Savings</span>
-                            </div>
-                            <button class="case-expand-btn" aria-label="Expand Case Study">
-                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="case-body" aria-hidden="true">
-                        <div class="case-body-inner">
-                            <p class="case-intro">Built end-to-end pricing models clustering consumer price elasticity to optimize lending yields alongside transformer-based NLP transcript analysis engines parsing caller intent and sentiment.</p>
-                            <div class="case-details-grid">
-                                <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>The retail lending arm was operating on static, rules-based pricing matrices that ignored shifting customer price elasticities, leading to sub-optimal yields and lost customer acquisition.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Context</h4>
-                                    <p>Operating within a highly competitive credit market, the organization processed millions of loan applications. A 10-basis-point mispricing could either bleed margin or drive premium borrowers to competitors.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Approach</h4>
-                                    <p>Developed an end-to-end dynamic pricing engine. We first segmented borrowers using a custom high-dimensional clustering algorithm, then trained localized XGBoost models to predict elasticity and default probabilities, culminating in an optimization engine that suggests dynamic interest rates.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Technical Choices</h4>
-                                    <p>Chose XGBoost over deep neural networks due to tabular data dominance, model explainability (SHAP values for compliance), and low inference latency. Utilized distributed Spark jobs to process historical customer application profiles and clickstream data spanning over 50 million records.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Impact</h4>
-                                    <p>Delivered an annualized revenue lift of $27M in active credit portfolios while reducing operational review costs by $5M through automated risk-tier routing.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>What I Learned</h4>
-                                    <p>Model performance is only half the battle; stakeholders require deep interpretability (SHAP/LIME) to trust and adopt algorithmic pricing decisions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Case Study 3 -->
-                <article class="case-card" id="case-3" tabindex="0" role="button" aria-expanded="false">
-                    <div class="case-header">
-                        <div class="case-header-left">
-                            <span class="case-kicker">Infrastructure &amp; MLOps</span>
-                            <h3>Production MLOps &amp; Data Infrastructure</h3>
-                            <div class="case-stack">
-                                <span>PySpark</span>
-                                <span>MLflow</span>
-                                <span>Docker</span>
-                                <span>Kubernetes</span>
-                                <span>Terraform</span>
-                                <span>Azure</span>
-                            </div>
-                        </div>
-                        <div class="case-header-right">
-                            <div class="case-metric-pill">
-                                <span class="metric-val">40-Min Cycles</span>
-                                <span class="metric-desc">Retraining &bull; Scale PySpark</span>
-                            </div>
-                            <button class="case-expand-btn" aria-label="Expand Case Study">
-                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="case-body" aria-hidden="true">
-                        <div class="case-body-inner">
-                            <p class="case-intro">Engineered daily automated model retraining pipelines across 2,000+ sensor features using PySpark and MLflow, integrated with config-driven CAD optimization engines for physical parts layout.</p>
-                            <div class="case-details-grid">
-                                <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>Data scientists spent weeks manually retraining and deploying physical parts layout models. Pipelines were fragile, lacked version control, and suffered from significant deployment delays.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Context</h4>
-                                    <p>The physical manufacturing division used custom CAD layouts optimized by machine learning. Since manufacturing physical properties change with materials and machinery wear, models required continuous, low-latency retraining.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Approach</h4>
-                                    <p>Architected and built an automated MLOps retraining infrastructure. The system automatically ingests sensor telemetry, processes features via PySpark, versions model artifacts in MLflow, builds containerized inference layers, and deploys to a Kubernetes cluster.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Technical Choices</h4>
-                                    <p>Used MLflow for reproducible model tracking and versioning, combined with Kubernetes for elastic horizontal scaling of CAD optimization runs. Adopted Infrastructure-as-Code (IaC) using Terraform to spin up identical cloud development and production sandboxes instantly.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>Impact</h4>
-                                    <p>Slashed the end-to-end model retraining and deployment cycle from 2 months of manual engineering to an automated, daily 40-minute pipeline.</p>
-                                </div>
-                                <div class="case-detail-col">
-                                    <h4>What I Learned</h4>
-                                    <p>Building reliable MLOps is not about the models; it is about rigorous data versioning, container isolation, and automated telemetry alerts to catch model drift early.</p>
+                                    <p>Automating mechanical parts layout requires balancing mathematical search algorithms (Genetic Algorithms, NP-Hard solvers) with designer intuition. Config-driven interfaces are key to achieving user-friendliness and trust with domain engineers.</p>
                                 </div>
                             </div>
                         </div>
