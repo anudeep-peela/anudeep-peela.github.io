@@ -1160,11 +1160,13 @@ p {
 }
 
 .modal-close-btn {
-  position: absolute;
-  top: clamp(1rem, 2.5vw, 1.75rem);
-  right: clamp(1rem, 2.5vw, 1.75rem);
-  background: rgba(18, 21, 26, 0.04);
-  border: none;
+  position: sticky;
+  top: 1.5rem;
+  right: 1.5rem;
+  align-self: flex-end;
+  margin-bottom: -40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(18, 21, 26, 0.08);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1173,8 +1175,9 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
-  z-index: 10;
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(18, 21, 26, 0.08);
 }
 
 .modal-close-btn:hover {
@@ -1316,7 +1319,9 @@ p {
   .modal-close-btn {
     top: 1rem;
     right: 1rem;
-    background: rgba(18, 21, 26, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(18, 21, 26, 0.12);
+    box-shadow: 0 4px 12px rgba(18, 21, 26, 0.12);
   }
 }
 
