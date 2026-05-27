@@ -257,22 +257,6 @@
                 </article>
             </div>
 
-            <!-- Single Modal Overlay -->
-            <div class="essay-modal" id="essay-modal-notebook" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-notebook">
-                <div class="modal-overlay"></div>
-                <div class="modal-card">
-                    <button class="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-                    <div class="modal-content">
-                        <span class="modal-meta">Published May 2026 &bull; 1 min read &bull; Engineering Notebook</span>
-                        <h2 id="modal-title-notebook">Sharing Insights on AI Systems &amp; Engineering</h2>
-                        
-                        <p class="modal-lead">Welcome to my engineering notebook. I believe that shipping robust, production-grade AI systems is as much about sharing knowledge and architectural patterns as it is about writing clean code.</p>
-
-                        <p>In the coming days, I will be publishing a series of technical notes and essays here, focusing on the realities of production-grade AI systems, advanced search architectures, MLOps, and the practical challenges of GenAI at enterprise scale.</p>
-                        
-                        <p>I look forward to sharing what I have built, the trade-offs encountered along the way, and the engineering maturity required to deliver real-world business impact. Stay tuned!</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -325,6 +309,24 @@
             </div>
         </section>
     </main>
+
+    <!-- Single Modal Overlay (Direct child of body to prevent stacking context parent transform bugs) -->
+    <div class="essay-modal" id="essay-modal-notebook" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-notebook">
+        <div class="modal-overlay"></div>
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="modal-content">
+                <span class="modal-meta">Published May 2026 &bull; 1 min read &bull; Engineering Notebook</span>
+                <h2 id="modal-title-notebook">Sharing Insights on AI Systems &amp; Engineering</h2>
+                
+                <p class="modal-lead">Welcome to my engineering notebook. I believe that shipping robust, production-grade AI systems is as much about sharing knowledge and architectural patterns as it is about writing clean code.</p>
+
+                <p>In the coming days, I will be publishing a series of technical notes and essays here, focusing on the realities of production-grade AI systems, advanced search architectures, MLOps, and the practical challenges of GenAI at enterprise scale.</p>
+                
+                <p>I look forward to sharing what I have built, the trade-offs encountered along the way, and the engineering maturity required to deliver real-world business impact. Stay tuned!</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
