@@ -100,5 +100,138 @@ document.addEventListener('DOMContentLoaded', function() {
             item.classList.add('visible');
         });
     }
+
+    // ==========================================
+    // Case Studies Accordion Expand/Collapse Logic
+    // ==========================================
+    var caseCards = document.querySelectorAll('.case-card');
+    caseCards.forEach(function(card) {
+        var body = card.querySelector('.case-body');
+        var btn = card.querySelector('.case-expand-btn');
+
+        function toggleCaseCard() {
+            var isExpanded = card.classList.contains('expanded');
+            
+            // Collapse all other case cards first to maintain single-accordion clarity
+            caseCards.forEach(function(otherCard) {
+                if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                    otherCard.classList.remove('expanded');
+                    var otherBody = otherCard.querySelector('.case-body');
+                    if (otherBody) {
+                        otherBody.style.maxHeight = '0px';
+                        otherBody.setAttribute('aria-hidden', 'true');
+                    }
+                    otherCard.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            if (isExpanded) {
+                card.classList.remove('expanded');
+                if (body) {
+                    body.style.maxHeight = '0px';
+                    body.setAttribute('aria-hidden', 'true');
+                }
+                card.setAttribute('aria-expanded', 'false');
+            } else {
+                card.classList.add('expanded');
+                if (body) {
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    body.setAttribute('aria-hidden', 'false');
+                }
+                card.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        card.addEventListener('click', function(e) {
+            // Avoid double-toggle if they explicitly clicked the expand button
+            if (e.target.closest('.case-expand-btn')) {
+                e.stopPropagation();
+            }
+            toggleCaseCard();
+        });
+
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleCaseCard();
+            });
+        }
+
+        // Keyboard accessibility
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault(); // Prevent default space bar page scroll
+                toggleCaseCard();
+            }
+        });
+    });
+
+    // ==========================================
+    // Writing Section Modals Logic
+    // ==========================================
+    var articleCards = document.querySelectorAll('.article-card[data-essay]');
+    var modals = document.querySelectorAll('.essay-modal');
+
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+
+        // Focus close button inside modal for accessibility
+        var closeBtn = modal.querySelector('.modal-close-btn');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // Unlock background scroll
+    }
+
+    articleCards.forEach(function(card) {
+        var essayType = card.getAttribute('data-essay');
+        var modalId = 'essay-modal-' + essayType;
+
+        card.addEventListener('click', function() {
+            openModal(modalId);
+        });
+
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(modalId);
+            }
+        });
+    });
+
+    modals.forEach(function(modal) {
+        var closeBtn = modal.querySelector('.modal-close-btn');
+        var overlay = modal.querySelector('.modal-overlay');
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                closeModal(modal);
+            });
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                closeModal(modal);
+            });
+        }
+    });
+
+    // Close modal on ESC key
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            modals.forEach(function(modal) {
+                if (modal.classList.contains('active')) {
+                    closeModal(modal);
+                }
+            });
+        }
+    });
 });
 }

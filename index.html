@@ -60,6 +60,7 @@
         <a href="#experience">Experience</a>
         <a href="#systems">Systems</a>
         <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
         <a href="#offduty">Off-Duty</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/anudeep-peela" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
@@ -104,7 +105,7 @@
         <section id="experience" class="section experience-section" aria-labelledby="experience-title">
             <div class="section-heading">
                 <p class="eyebrow">Experience</p>
-                <h2 id="experience-title">McKinsey data scientist shipping across complex industries.</h2>
+                <h2 id="experience-title">Forward-deployed AI engineer shipping across complex industry use cases.</h2>
             </div>
             <div class="timeline">
                 <article class="timeline-item">
@@ -172,42 +173,90 @@
                 <h2 id="work-title">Project stories with technical and business signal.</h2>
             </div>
             <div class="case-grid">
-                <article class="case-card featured">
-                    <img src="images/genai_copilot.webp" alt="AI Agent and Search architecture screenshot" loading="lazy">
-                    <div class="case-content">
-                        <p class="case-kicker">Generative AI &amp; Intelligent Agents</p>
-                        <h3>Intelligent AI Agents &amp; Cognitive Search</h3>
-                        <p>Designed and deployed production-grade RAG and agentic workflows, featuring a hybrid search co-pilot for pharmaceutical compliance audits and a multi-agent automated cash-reconciliation engine.</p>
-                        <dl>
-                            <div><dt>Stack</dt><dd>OpenAI Agent SDK, LangChain, Hybrid Search, RAG</dd></div>
-                            <div><dt>Result</dt><dd>90% faster reviews, 96% accuracy, $6.3M/yr estimated savings</dd></div>
-                        </dl>
+                <!-- Single Focused Case Study: Engine Parts Allocation (Client-Safe, High-Level) -->
+                <article class="case-card" id="case-1" tabindex="0" role="button" aria-expanded="false">
+                    <div class="case-header">
+                        <div class="case-header-left">
+                            <span class="case-kicker">Design Optimization &amp; CAD Automation</span>
+                            <h3>Engine Parts Allocation &amp; Layout Optimization</h3>
+                            <div class="case-stack">
+                                <span>Python</span>
+                                <span>Optimization Algorithms</span>
+                                <span>CAD Systems</span>
+                                <span>3D Geometry</span>
+                                <span>Heuristics</span>
+                                <span>Distributed Compute</span>
+                            </div>
+                        </div>
+                        <div class="case-header-right">
+                            <div class="case-metric-pill">
+                                <span class="metric-val">CAD Automation</span>
+                                <span class="metric-desc">Layout Optimization</span>
+                            </div>
+                            <button class="case-expand-btn" aria-label="Expand Case Study">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="case-body" aria-hidden="true">
+                        <div class="case-body-inner">
+                            <p class="case-intro">Helped one of the largest automobile clients in building their next-gen engines by optimizing engine parts allocation and piping. Developed an MVP for generalized automatic end-to-end layout optimization to be integrated into the client's workstream.</p>
+                            <div class="case-details-grid">
+                                <div class="case-detail-col">
+                                    <h4>Aim &amp; Problem</h4>
+                                    <p>The primary aim of the project was to develop a design layout optimization tool. This tool is intended to optimize the arrangement and piping of various mechanical components in a given space, ensuring that spatial constraints are met and layouts are highly efficient in terms of volume.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Context</h4>
+                                    <p>Partnered with one of the largest global automotive manufacturers to optimize mechanical packaging layouts, converting manual design iterations into highly automated pipelines.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Approach</h4>
+                                    <p>Formulated layout optimization as a constrained spatial search problem. We limited the solution space by iteratively constraining part movements and fixing components sequentially to test and learn rapidly.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Technical Choices</h4>
+                                    <p><strong>Algorithmic Search:</strong> Used optimization algorithms (such as genetic algorithms and heuristic methods) to intelligently determine coordinates and rotations for all parts, guided by cost functions to reinforce potential solutions.
+                                    <br><strong>Heuristics:</strong> Incorporated intuitive layout rules from expert designers to arrive at feasible arrangements faster.
+                                    <br><strong>Piping Algorithms:</strong> Developed routing algorithms to automatically connect pipes while avoiding spatial obstacles.
+                                    <br><strong>Compute Scalability:</strong> Structured the pipeline to run on both personal laptops and distributed cloud compute environments for parallel execution.
+                                    <br><strong>CAD Integration:</strong> Integrated automated pre- and post-processing tools to clean up data and enable import/export support with standard CAD software (such as Catia).</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Impact</h4>
+                                    <p><strong>Efficiency &amp; Agility:</strong> Allowed for faster development times and the evaluation of more design variations in a highly agile manner.
+                                    <br><strong>Design Feasibility:</strong> Incorporating domain expertise and heuristics from designers ensured that layouts were highly optimized and practical.
+                                    <br><strong>User-Friendliness:</strong> Configuration files act as an easy interface for parameters, allowing designers to run layouts without programming knowledge.
+                                    <br><strong>Tool Integration:</strong> Seamless integration with CAD software facilitates collaboration and further design refinement across departments.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>What I Learned</h4>
+                                    <p>Automating complex physical layouts requires combining mathematical search methods with flexible configuration interfaces that respect mechanical designers' real-world workflows and intuition.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </article>
-                <article class="case-card">
-                    <img src="images/Pricing_Model.webp" alt="Predictive machine learning models screenshot" loading="lazy">
-                    <div class="case-content">
-                        <p class="case-kicker">Predictive Modeling &amp; Analytics</p>
-                        <h3>Predictive Modeling &amp; Pricing Optimization</h3>
-                        <p>Built end-to-end pricing models clustering consumer price elasticity to optimize lending yields alongside transformer-based NLP transcript analysis engines parsing caller intent and sentiment.</p>
-                        <dl>
-                            <div><dt>Stack</dt><dd>XGBoost, Customer Clustering, Transformers, NLP</dd></div>
-                            <div><dt>Result</dt><dd>+$27M annualized revenue, $5M operations savings</dd></div>
-                        </dl>
-                    </div>
+            </div>
+        </section>
+
+        <section id="writing" class="section writing-section" aria-labelledby="writing-title">
+            <div class="section-heading">
+                <p class="eyebrow">Writing &amp; Thinking</p>
+                <h2 id="writing-title">Technical essays &amp; product insights.</h2>
+                <p>Thought leadership at the intersection of production machine learning, software engineering, and business strategy.</p>
+            </div>
+            <div class="writing-grid">
+                <!-- Single Focused Article Card -->
+                <article class="article-card featured-single" data-essay="notebook" tabindex="0" role="button" aria-haspopup="dialog">
+                    <span class="article-meta">Engineering Notebook</span>
+                    <h3>Sharing Insights on AI Systems &amp; Engineering</h3>
+                    <p>A dedicated space for sharing learnings, architectural notes, and production engineering insights from shipping AI systems at scale. Full essays coming soon.</p>
+                    <span class="article-link">Read note <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                 </article>
-                <article class="case-card">
-                    <img src="images/layout_optimization.webp" alt="Distributed MLOps and infrastructure pipelines screenshot" loading="lazy">
-                    <div class="case-content">
-                        <p class="case-kicker">Infrastructure &amp; MLOps</p>
-                        <h3>Production MLOps &amp; Data Infrastructure</h3>
-                        <p>Engineered daily automated model retraining pipelines across 2,000+ sensor features using PySpark and MLflow, integrated with config-driven CAD optimization engines for physical parts layout.</p>
-                        <dl>
-                            <div><dt>Stack</dt><dd>PySpark, MLflow, Docker, Kubernetes, Terraform, Azure</dd></div>
-                            <div><dt>Result</dt><dd>Daily active MLOps, iteration cycle from 2 months to under 40 mins</dd></div>
-                        </dl>
-                    </div>
-                </article>
+            </div>
+
             </div>
         </section>
 
@@ -225,7 +274,7 @@
                     <div class="offduty-content">
                         <span class="offduty-index">01</span>
                         <h3>Expedition &amp; Peaks</h3>
-                        <p>Annual high-altitude trekking and peak exploration.</p>
+                        <p>High-altitude trekking and peak exploration.</p>
                     </div>
                 </article>
                 <article class="offduty-card text-only">
@@ -250,7 +299,7 @@
             <div class="contact-panel">
                 <div>
                     <p class="eyebrow">Contact</p>
-                    <h2 id="contact-title">Useful AI, shipped with discipline.</h2>
+                    <h2 id="contact-title">High-integrity AI, built for impact.</h2>
                     <p>Open to conversations around production GenAI, decision systems, applied ML, and senior data science roles.</p>
                 </div>
                 <div class="contact-actions">
@@ -260,6 +309,24 @@
             </div>
         </section>
     </main>
+
+    <!-- Single Modal Overlay (Direct child of body to prevent stacking context parent transform bugs) -->
+    <div class="essay-modal" id="essay-modal-notebook" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-notebook">
+        <div class="modal-overlay"></div>
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <div class="modal-content">
+                <span class="modal-meta">Published May 2026 &bull; 1 min read &bull; Engineering Notebook</span>
+                <h2 id="modal-title-notebook">Sharing Insights on AI Systems &amp; Engineering</h2>
+                
+                <p class="modal-lead">Welcome to my engineering notebook. I believe that shipping robust, production-grade AI systems is as much about sharing knowledge and architectural patterns as it is about writing clean code.</p>
+
+                <p>In the coming days, I will be publishing a series of technical notes and essays here, focusing on the realities of production-grade AI systems, advanced search architectures, MLOps, and the practical challenges of GenAI at enterprise scale.</p>
+                
+                <p>I look forward to sharing what I have built, the trade-offs encountered along the way, and the engineering maturity required to deliver real-world business impact. Stay tuned!</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
