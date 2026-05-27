@@ -355,113 +355,29 @@
                 <p>Thought leadership at the intersection of production machine learning, software engineering, and business strategy.</p>
             </div>
             <div class="writing-grid">
-                <!-- Article Card 1 -->
-                <article class="article-card" data-essay="rag" tabindex="0" role="button" aria-haspopup="dialog">
-                    <span class="article-meta">May 2026 &bull; 6 min read</span>
-                    <h3>RAG is not a product: lessons from enterprise search</h3>
-                    <p>Why naive vector databases fail in production and how to build a robust multi-stage search architecture using hybrid retrieval, semantic chunking, and rerankers.</p>
-                    <span class="article-link">Read essay <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                </article>
-
-                <!-- Article Card 2 -->
-                <article class="article-card" data-essay="genai" tabindex="0" role="button" aria-haspopup="dialog">
-                    <span class="article-meta">May 2026 &bull; 5 min read</span>
-                    <h3>What makes enterprise GenAI projects fail?</h3>
-                    <p>Deconstructing the transition from sandbox to production: evaluation pipelines, systematic telemetry, cost economics, and agent latency bottleneck mitigation.</p>
-                    <span class="article-link">Read essay <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                </article>
-
-                <!-- Coming Soon Card 1 -->
-                <article class="article-card coming-soon">
-                    <span class="article-meta">Coming Soon</span>
-                    <h3>How I think about moving from Data Scientist to AI Engineer</h3>
-                    <p>Analyzing the shift in technical demands, from training and tuning model parameters to designing robust agent orchestrations and production software architecture.</p>
-                </article>
-
-                <!-- Coming Soon Card 2 -->
-                <article class="article-card coming-soon">
-                    <span class="article-meta">Coming Soon</span>
-                    <h3>What consulting teaches you about ML product discovery</h3>
-                    <p>Lessons from shipping high-impact decision systems: identifying commercial friction points, aligning stakeholders, and structuring client-safe stories.</p>
-                </article>
-
-                <!-- Coming Soon Card 3 -->
-                <article class="article-card coming-soon">
-                    <span class="article-meta">Coming Soon</span>
-                    <h3>How to evaluate AI use cases before building</h3>
-                    <p>A rigorous engineering framework for evaluating business feasibility, data readiness, safety risk, and integration costs prior to writing a single line of code.</p>
+                <!-- Single Focused Article Card -->
+                <article class="article-card featured-single" data-essay="notebook" tabindex="0" role="button" aria-haspopup="dialog">
+                    <span class="article-meta">Engineering Notebook</span>
+                    <h3>Sharing Insights on AI Systems &amp; Engineering</h3>
+                    <p>A dedicated space for sharing learnings, architectural notes, and production engineering insights from shipping AI systems at scale. Full essays coming soon.</p>
+                    <span class="article-link">Read note <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                 </article>
             </div>
 
-            <!-- Modal Overlays -->
-            <div class="essay-modal" id="essay-modal-rag" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-rag">
+            <!-- Single Modal Overlay -->
+            <div class="essay-modal" id="essay-modal-notebook" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-notebook">
                 <div class="modal-overlay"></div>
                 <div class="modal-card">
                     <button class="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
                     <div class="modal-content">
-                        <span class="modal-meta">Published May 2026 &bull; 6 min read &bull; AI Engineering, Search</span>
-                        <h2 id="modal-title-rag">RAG is not a product: lessons from enterprise search</h2>
+                        <span class="modal-meta">Published May 2026 &bull; 1 min read &bull; Engineering Notebook</span>
+                        <h2 id="modal-title-notebook">Sharing Insights on AI Systems &amp; Engineering</h2>
                         
-                        <p class="modal-lead">Many organizations start their Generative AI journey by hooking an LLM up to a vector database via a default framework like LangChain or LlamaIndex. In a sandbox, this "vibe-check" prototype looks magical. But when deployed to enterprise production, the system falls apart.</p>
+                        <p class="modal-lead">Welcome to my engineering notebook. I believe that shipping robust, production-grade AI systems is as much about sharing knowledge and architectural patterns as it is about writing clean code.</p>
 
-                        <p>Vector search fails to find exact drug codes; long PDF standard operating procedures (SOPs) return fragmented chunks that miss critical safety tables; and users get confident hallucinations.</p>
+                        <p>In the coming days, I will be publishing a series of technical notes and essays here, focusing on the realities of production-grade AI systems, advanced search architectures, MLOps, and the practical challenges of GenAI at enterprise scale.</p>
                         
-                        <p>The fundamental mistake is treating Retrieval-Augmented Generation (RAG) as a single library call rather than a complex <strong>search systems engineering</strong> problem. Enterprise search is not just vector similarity. Real-world documents are messy, hierarchical, and full of domain-specific jargon. To build production-grade search, we must move beyond naive vector lookups and adopt a robust, multi-stage retrieval architecture.</p>
-
-                        <div class="modal-quote">
-                            <p>"Naive RAG is a toy. Enterprise search requires the same mathematical and structural rigor we apply to core database engine designs."</p>
-                        </div>
-
-                        <h3>Stage 1: Hybrid Retrieval is Mandatory</h3>
-                        <p>Vector databases excels at conceptual queries, but they are notoriously bad at finding exact numbers, part codes, or pharmaceutical drug IDs. If an auditor searches for "batch FDA-902-X", a vector database might return batch FDA-901-Y because the semantic vectors are close. To solve this, we must build a hybrid retrieval engine combining <strong>sparse lexical search (BM25)</strong> for keyword matching and exact codes with <strong>dense neural search (embeddings)</strong> for semantic intent. We then merge the result sets using <strong>Reciprocal Rank Fusion (RRF)</strong>.</p>
-
-                        <h3>Stage 2: Advanced Document Chunking &amp; Parsing</h3>
-                        <p>Standard chunking (e.g., fixed-size 512 character splits) is a naive approach. If a table or a sentence is split in half, its semantic meaning is destroyed. Production search requires <strong>semantic chunking</strong> (splitting on natural semantic shifts, such as heading boundaries) and <strong>parent-child chunking</strong>. In a parent-child layout, we store small child chunks (e.g. 100 characters) for high-precision retrieval, but when a match is found, we feed the larger parent context (e.g. 1000 characters) to the LLM. This preserves broad context while maximizing semantic vector accuracy.</p>
-
-                        <h3>Stage 3: The Power of Reranking</h3>
-                        <p>Raw vector databases return results sorted by cosine similarity, which is often a poor proxy for actual document relevance in highly specialized fields. Implementing a secondary <strong>Reranker</strong> layer (using models like Cohere Rerank or BGE-Reranker) is the single highest-ROI architectural upgrade you can make. The reranker evaluates the query against the top 20 retrieved chunks using a deep cross-encoder model, sorting them with high precision and selecting only the top 3-5 high-signal chunks to fit within the LLM's prompt window.</p>
-
-                        <div class="modal-alert note">
-                            <p><strong>MLOps Tip:</strong> Build comprehensive test suites (using tools like Ragas or TruLens) to measure context recall, answer relevance, and faithfulness quantitatively rather than relying on qualitative spot checks.</p>
-                        </div>
-                        
-                        <p>Ultimately, engineering robust enterprise AI means treating retrieval with the same mathematical rigor we apply to core models. Only then can we ship products that earn the trust of compliance auditors, medical practitioners, and engineering leaders.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="essay-modal" id="essay-modal-genai" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title-genai">
-                <div class="modal-overlay"></div>
-                <div class="modal-card">
-                    <button class="modal-close-btn" aria-label="Close modal"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-                    <div class="modal-content">
-                        <span class="modal-meta">Published May 2026 &bull; 5 min read &bull; GenAI, MLOps, Strategy</span>
-                        <h2 id="modal-title-genai">What makes enterprise GenAI projects fail?</h2>
-                        
-                        <p class="modal-lead">Over the past year, the industry has seen an explosion of Generative AI prototypes. Yet, according to analysts, less than 15% of enterprise GenAI sandboxes successfully cross the chasm into day-to-day production. Why?</p>
-
-                        <p>The failure is rarely a failure of the models themselves. Modern frontier models are exceptionally capable. Instead, projects fail because of a disconnect between prototype-level engineering and the operational realities of enterprise MLOps, user experience, and cost economics.</p>
-                        
-                        <p>Let's deconstruct the three primary failure modes and examine the engineering strategies needed to mitigate them.</p>
-
-                        <h3>Failure 1: The 'Vibe-Check' Evaluation Trap</h3>
-                        <p>In the early stages of a GenAI project, developers test their system by writing 5-10 prompts and manually inspecting the outputs. If it looks good, they deem it ready. This "vibe check" is the leading cause of production failure. LLMs are non-deterministic; a minor change in the system prompt or underlying model API can silently degrade accuracy in edge cases. Without systematic, automated evaluation pipelines—measuring hallucination rates, safety alignment, and response consistency over a gold-standard dataset of hundreds of test cases—you are flying blind.</p>
-
-                        <h3>Failure 2: Neglecting Structured Telemetry and MLOps</h3>
-                        <p>Once an LLM is in the wild, it is a black box. Traditional software monitoring tracks server latency and uptime, but GenAI demands semantic telemetry. You must monitor prompt and completion drift, log tool-execution chains, track user feedback loops (likes/dislikes), and evaluate daily cost dynamics. Without comprehensive tracing (using platforms like MLflow, Langfuse, or Phoenix), debugging a multi-agent system that failed on step 4 of a 7-step planning loop is practically impossible.</p>
-
-                        <div class="modal-alert note">
-                            <p><strong>Architectural Best Practice:</strong> Implement standardized JSON-logging schemas for all LLM calls, tracing input tokens, output tokens, system parameters, latency, and intermediate tool call outputs.</p>
-                        </div>
-
-                        <h3>Failure 3: The Cost &amp; Latency Blindspot</h3>
-                        <p>Prototyping with rich, proprietary frontier APIs is simple. But when scaled to millions of API calls, the cost and latency economics can quickly become unviable. Chaining multiple autonomous agents, each making multiple LLM calls per request, results in sequential latency bottlenecks that frustrate users and exhaust API quotas. Production AI engineers must proactively design for cost efficiency: caching frequent queries, fine-tuning smaller open-source models (like Llama 3 or Mistral) for specific sub-tasks, and utilizing asynchronous routing.</p>
-
-                        <div class="modal-quote">
-                            <p>"Moving from a sandbox to a production-grade enterprise system requires a shift in mindset. Stop thinking like a prompter; start thinking like a systems architect."</p>
-                        </div>
-                        
-                        <p>Focus on evaluation, telemetry, robust guardrails, and deterministic safety nets. By solving these operational engineering problems, we turn fragile prototypes into reliable enterprise assets.</p>
+                        <p>I look forward to sharing what I have built, the trade-offs encountered along the way, and the engineering maturity required to deliver real-world business impact. Stay tuned!</p>
                     </div>
                 </div>
             </div>
@@ -506,7 +422,7 @@
             <div class="contact-panel">
                 <div>
                     <p class="eyebrow">Contact</p>
-                    <h2 id="contact-title">High-integrity AI, engineered for enterprise impact.</h2>
+                    <h2 id="contact-title">High-integrity AI, built for impact.</h2>
                     <p>Open to conversations around production GenAI, decision systems, applied ML, and senior data science roles.</p>
                 </div>
                 <div class="contact-actions">

@@ -971,13 +971,17 @@ p {
 
 /* Writing & Thinking Section Styles */
 .writing-section {
-  background: linear-gradient(180deg, rgba(255, 254, 250, 0.48) 0%, transparent 100%);
+  background: transparent;
 }
 
 .writing-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+.article-card.featured-single {
+  grid-column: 2 / 6;
 }
 
 .article-card {
@@ -1278,13 +1282,10 @@ p {
   border-radius: 4px;
 }
 
-/* Responsive Overrides for Writing Grid */
 @media (max-width: 980px) {
-  .article-card {
-    grid-column: span 3;
-  }
-  .article-card.coming-soon {
-    grid-column: span 3;
+  .article-card,
+  .article-card.featured-single {
+    grid-column: 1 / -1;
   }
 }
 
