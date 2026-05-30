@@ -25,8 +25,8 @@ if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', function() {
     var progress = document.querySelector('.scroll-progress');
     var revealItems = document.querySelectorAll('.section, .hero-copy, .portrait-card');
-    var navLinks = document.querySelectorAll('.main-nav a');
-    allSections = document.querySelectorAll('section, header.hero');
+    var navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+    allSections = document.querySelectorAll('header.hero, main > section');
 
     revealItems.forEach(function(item) {
         item.classList.add('hidden');
@@ -45,21 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
         progress.style.width = Math.max(0, Math.min(100, percent)) + '%';
     }
 
+    var activeSectionId = '';
     function highlightActiveNavLink() {
         var closestIdx = getClosestSection();
         var closestSec = allSections[closestIdx];
-        if (!closestSec) return;
+        if (!closestSec || closestSec.id === activeSectionId) return;
 
         navLinks.forEach(function(link) {
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
         });
 
         if (closestSec.id) {
             var activeLink = document.querySelector('.main-nav a[href="#' + closestSec.id + '"]');
             if (activeLink) {
                 activeLink.classList.add('active');
+                activeLink.setAttribute('aria-current', 'location');
+                activeSectionId = closestSec.id;
 
-                // Smoothly center the active tab horizontally inside the mobile floating navigation bubble
+                // Recenter once per section change instead of restarting on every scroll frame.
                 var nav = document.querySelector('.main-nav');
                 if (nav && window.innerWidth <= 980) {
                     var offsetLeft = activeLink.offsetLeft;
@@ -121,8 +125,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     var caseCards = document.querySelectorAll('.case-card');
     caseCards.forEach(function(card) {
-        var body = card.querySelector('.case-body');
         var btn = card.querySelector('.case-expand-btn');
+
+        function setCaseCardExpanded(targetCard, isExpanded) {
+            var targetBody = targetCard.querySelector('.case-body');
+            var targetBtn = targetCard.querySelector('.case-expand-btn');
+            targetCard.classList.toggle('expanded', isExpanded);
+            if (targetBody) {
+                targetBody.style.maxHeight = isExpanded ? targetBody.scrollHeight + 'px' : '0px';
+                targetBody.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+            }
+            if (targetBtn) {
+                targetBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+            }
+        }
 
         function toggleCaseCard() {
             var isExpanded = card.classList.contains('expanded');
@@ -130,65 +146,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Collapse all other case cards first to maintain single-accordion clarity
             caseCards.forEach(function(otherCard) {
                 if (otherCard !== card && otherCard.classList.contains('expanded')) {
-                    otherCard.classList.remove('expanded');
-                    var otherBody = otherCard.querySelector('.case-body');
-                    var otherBtn = otherCard.querySelector('.case-expand-btn');
-                    if (otherBody) {
-                        otherBody.style.maxHeight = '0px';
-                        otherBody.setAttribute('aria-hidden', 'true');
-                    }
-                    if (otherBtn) {
-                        otherBtn.setAttribute('aria-label', 'Expand Case Study');
-                    }
-                    otherCard.setAttribute('aria-expanded', 'false');
+                    setCaseCardExpanded(otherCard, false);
                 }
             });
 
-            if (isExpanded) {
-                card.classList.remove('expanded');
-                if (body) {
-                    body.style.maxHeight = '0px';
-                    body.setAttribute('aria-hidden', 'true');
-                }
-                if (btn) {
-                    btn.setAttribute('aria-label', 'Expand Case Study');
-                }
-                card.setAttribute('aria-expanded', 'false');
-            } else {
-                card.classList.add('expanded');
-                if (body) {
-                    body.style.maxHeight = body.scrollHeight + 'px';
-                    body.setAttribute('aria-hidden', 'false');
-                }
-                if (btn) {
-                    btn.setAttribute('aria-label', 'Collapse Case Study');
-                }
-                card.setAttribute('aria-expanded', 'true');
-            }
+            setCaseCardExpanded(card, !isExpanded);
         }
-
-        card.addEventListener('click', function(e) {
-            // Avoid double-toggle if they explicitly clicked the expand button
-            if (e.target.closest('.case-expand-btn')) {
-                e.stopPropagation();
-            }
-            toggleCaseCard();
-        });
 
         if (btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
+            btn.addEventListener('click', function() {
                 toggleCaseCard();
             });
         }
-
-        // Keyboard accessibility
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault(); // Prevent default space bar page scroll
-                toggleCaseCard();
-            }
-        });
     });
 
     // ==========================================
@@ -196,23 +165,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     var articleCards = document.querySelectorAll('.article-card[data-essay]');
     var modals = document.querySelectorAll('.essay-modal');
+    var lastFocusedElement = null;
 
-    function openModal(modalId) {
+    function openModal(modalId, trigger) {
         var modal = document.getElementById(modalId);
         if (!modal) return;
+        lastFocusedElement = trigger || document.activeElement;
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Lock background scroll
 
-        // Focus close button inside modal for accessibility
         var closeBtn = modal.querySelector('.modal-close-btn');
-        if (closeBtn) closeBtn.focus();
+        if (closeBtn) {
+            window.setTimeout(function() {
+                closeBtn.focus();
+            }, 0);
+        }
     }
 
     function closeModal(modal) {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = ''; // Unlock background scroll
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+        lastFocusedElement = null;
     }
 
     articleCards.forEach(function(card) {
@@ -220,13 +198,13 @@ document.addEventListener('DOMContentLoaded', function() {
         var modalId = 'essay-modal-' + essayType;
 
         card.addEventListener('click', function() {
-            openModal(modalId);
+            openModal(modalId, card);
         });
 
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                openModal(modalId);
+                openModal(modalId, card);
             }
         });
     });
@@ -250,6 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close modal on ESC key
     window.addEventListener('keydown', function(e) {
+        var activeModal = document.querySelector('.essay-modal.active');
+        if (e.key === 'Tab' && activeModal) {
+            e.preventDefault();
+            var closeBtn = activeModal.querySelector('.modal-close-btn');
+            if (closeBtn) closeBtn.focus();
+        }
         if (e.key === 'Escape') {
             modals.forEach(function(modal) {
                 if (modal.classList.contains('active')) {
