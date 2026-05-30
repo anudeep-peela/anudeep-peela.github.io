@@ -45,6 +45,12 @@ async function runInteractionTests() {
     assert.strictEqual(link.getAttribute('href'), 'Q2_2026_Anudeep_Peela_Data_Scientist_Resume.pdf');
   });
 
+  assert.strictEqual(document.querySelectorAll('.main-nav a[href^="#"]').length, 5);
+  assert.strictEqual(document.querySelector('.main-nav a[href="#offduty"]').textContent, 'Life');
+  assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
+  assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 4);
+  assert.ok(document.querySelector('.domain-line'));
+
   const trackedSections = [...document.querySelectorAll('header.hero, main > section')];
   trackedSections.forEach((section, index) => {
     section.getBoundingClientRect = () => ({ top: index === 1 ? 10 : 1000 + index });
@@ -70,6 +76,9 @@ async function runInteractionTests() {
   const caseCards = [...document.querySelectorAll('.case-card')];
   const caseButtons = [...document.querySelectorAll('.case-expand-btn')];
   assert.strictEqual(caseCards.length, 3);
+  assert.ok(caseCards[0].classList.contains('case-card-mobility'));
+  assert.ok(caseCards[1].classList.contains('case-card-pharma'));
+  assert.ok(caseCards[2].classList.contains('case-card-automotive'));
   assert.strictEqual(document.querySelectorAll('[role="button"] button').length, 0);
 
   caseButtons[0].click();

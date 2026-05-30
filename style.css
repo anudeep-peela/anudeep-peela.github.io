@@ -458,7 +458,7 @@ p {
 }
 
 .capability-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -483,6 +483,22 @@ p {
   margin: 0.9rem 0 0;
 }
 
+.domain-line {
+  width: var(--container);
+  margin: 1.2rem auto 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+}
+
+.domain-line span {
+  display: inline-block;
+  margin-right: 0.65rem;
+  color: #9bd9cd;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .case-grid {
   display: flex;
   flex-direction: column;
@@ -493,6 +509,8 @@ p {
 }
 
 .case-card {
+  --case-tint: rgba(16, 42, 194, 0.055);
+  --case-accent: var(--accent);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -516,7 +534,7 @@ p {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--green));
+  background: linear-gradient(90deg, var(--case-accent), var(--green));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 2;
@@ -542,6 +560,21 @@ p {
   padding: clamp(1.25rem, 2.5vw, 2rem);
   gap: 2rem;
   width: 100%;
+  background: linear-gradient(90deg, var(--case-tint), transparent 34%);
+}
+
+.case-card-mobility {
+  --case-tint: rgba(18, 116, 95, 0.075);
+  --case-accent: var(--green);
+}
+
+.case-card-pharma {
+  --case-tint: rgba(16, 42, 194, 0.065);
+}
+
+.case-card-automotive {
+  --case-tint: rgba(141, 85, 36, 0.07);
+  --case-accent: #8d5524;
 }
 
 .case-header-left {
@@ -911,6 +944,8 @@ p {
 
 .offduty-card.text-only {
   padding: clamp(1.5rem, 3vw, 2.25rem);
+  justify-content: center;
+  border-top: 4px solid var(--accent);
 }
 
 .offduty-frame {
@@ -974,6 +1009,7 @@ p {
 /* Writing & Thinking Section Styles */
 .writing-section {
   background: transparent;
+  padding-block: clamp(3.75rem, 7vw, 6rem);
 }
 
 .writing-grid {
@@ -984,6 +1020,8 @@ p {
 
 .article-card.featured-single {
   grid-column: 2 / 6;
+  max-width: 760px;
+  margin-inline: auto;
 }
 
 .article-card {
