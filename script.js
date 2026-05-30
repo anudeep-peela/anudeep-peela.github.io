@@ -117,9 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (otherCard !== card && otherCard.classList.contains('expanded')) {
                     otherCard.classList.remove('expanded');
                     var otherBody = otherCard.querySelector('.case-body');
+                    var otherBtn = otherCard.querySelector('.case-expand-btn');
                     if (otherBody) {
                         otherBody.style.maxHeight = '0px';
                         otherBody.setAttribute('aria-hidden', 'true');
+                    }
+                    if (otherBtn) {
+                        otherBtn.setAttribute('aria-label', 'Expand Case Study');
                     }
                     otherCard.setAttribute('aria-expanded', 'false');
                 }
@@ -131,12 +135,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     body.style.maxHeight = '0px';
                     body.setAttribute('aria-hidden', 'true');
                 }
+                if (btn) {
+                    btn.setAttribute('aria-label', 'Expand Case Study');
+                }
                 card.setAttribute('aria-expanded', 'false');
             } else {
                 card.classList.add('expanded');
                 if (body) {
                     body.style.maxHeight = body.scrollHeight + 'px';
                     body.setAttribute('aria-hidden', 'false');
+                }
+                if (btn) {
+                    btn.setAttribute('aria-label', 'Collapse Case Study');
                 }
                 card.setAttribute('aria-expanded', 'true');
             }
