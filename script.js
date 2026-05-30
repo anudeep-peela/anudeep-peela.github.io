@@ -79,23 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
         highlightActiveNavLink();
     }
 
-    // ⚡ Bolt: Throttled scroll event using requestAnimationFrame
-    // 💡 What: Wrapping the scroll handler in requestAnimationFrame
-    // 🎯 Why: Unthrottled scroll events firing layout-reading functions like getBoundingClientRect can cause layout thrashing and drop frames, especially on mobile.
-    // 📊 Impact: Limits execution to the browser's refresh rate (e.g., 60fps), reducing CPU usage and jank.
-    var isTicking = false;
-    function onScroll() {
-        if (!isTicking) {
-            window.requestAnimationFrame(function() {
-                handleScroll();
-                isTicking = false;
-            });
-            isTicking = true;
-        }
-    }
-
     handleScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
