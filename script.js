@@ -52,12 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         navLinks.forEach(function(link) {
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
         });
 
         if (closestSec.id) {
             var activeLink = document.querySelector('.main-nav a[href="#' + closestSec.id + '"]');
             if (activeLink) {
                 activeLink.classList.add('active');
+                activeLink.setAttribute('aria-current', 'true');
 
                 // Smoothly center the active tab horizontally inside the mobile floating navigation bubble
                 var nav = document.querySelector('.main-nav');
@@ -196,10 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     var articleCards = document.querySelectorAll('.article-card[data-essay]');
     var modals = document.querySelectorAll('.essay-modal');
+    var previousFocusElement = null;
 
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         if (!modal) return;
+        previousFocusElement = document.activeElement;
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Lock background scroll
@@ -213,6 +217,10 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = ''; // Unlock background scroll
+        if (previousFocusElement) {
+            previousFocusElement.focus();
+            previousFocusElement = null;
+        }
     }
 
     articleCards.forEach(function(card) {
