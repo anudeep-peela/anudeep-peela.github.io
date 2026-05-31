@@ -796,11 +796,6 @@ p {
     overflow-x: auto;
   }
 
-  .offduty-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
   .hero-inner {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -1004,6 +999,13 @@ p {
   font-size: 0.94rem;
   line-height: 1.55;
   color: var(--ink-2);
+}
+
+@media (max-width: 980px) {
+  .offduty-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
 /* Writing & Thinking Section Styles */

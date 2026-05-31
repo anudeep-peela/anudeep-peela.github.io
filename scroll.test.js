@@ -106,6 +106,11 @@ async function runInteractionTests() {
   assert.match(css, /flex:\s*0 0 40px/);
   assert.doesNotMatch(css, /order:\s*-1/);
   assert.match(css, /\.main-nav \.nav-social,\s*\n\s*\.main-nav \.nav-cv\s*\{\s*\n\s*display:\s*none/);
+  assert.ok(
+    css.lastIndexOf('@media (max-width: 980px) {\n  .offduty-grid') >
+      css.lastIndexOf('.offduty-grid {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));'),
+    'mobile Life grid override must follow the desktop grid declaration'
+  );
 }
 
 runInteractionTests()
