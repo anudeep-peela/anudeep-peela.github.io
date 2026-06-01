@@ -561,6 +561,7 @@ p {
   gap: 2rem;
   width: 100%;
   background: linear-gradient(90deg, var(--case-tint), transparent 34%);
+  cursor: pointer;
 }
 
 .case-card-mobility {
@@ -1372,7 +1373,9 @@ p {
 
 /* Accessibility Focus States */
 .case-card:focus-visible,
-.article-card:focus-visible {
+.article-card:focus-visible,
+.case-expand-btn:focus-visible,
+.modal-close-btn:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
