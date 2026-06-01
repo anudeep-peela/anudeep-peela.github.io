@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var caseCards = document.querySelectorAll('.case-card');
     caseCards.forEach(function(card) {
         var btn = card.querySelector('.case-expand-btn');
+        var header = card.querySelector('.case-header');
 
         function setCaseCardExpanded(targetCard, isExpanded) {
             var targetBody = targetCard.querySelector('.case-body');
@@ -154,8 +155,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (btn) {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent double trigger if header is also clicked
                 toggleCaseCard();
+            });
+        }
+
+        // 🎨 Palette: Fitts's Law UX Improvement
+        // 💡 What: Make the entire header area clickable to toggle the accordion
+        // 🎯 Why: Dramatically increases the tap target for touch devices and pointing accuracy for mice
+        if (header) {
+            header.addEventListener('click', function(e) {
+                if (!e.target.closest('a') && !e.target.closest('button')) {
+                   toggleCaseCard();
+                }
             });
         }
     });
