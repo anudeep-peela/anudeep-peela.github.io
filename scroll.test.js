@@ -74,7 +74,7 @@ async function runInteractionTests() {
   assert.strictEqual(scrollCalls.length, scrollCallsAfterExperience + 1);
 
   const caseCards = [...document.querySelectorAll('.case-card')];
-  const caseButtons = [...document.querySelectorAll('.case-expand-btn')];
+  const caseButtons = [...document.querySelectorAll('.case-header')];
   assert.strictEqual(caseCards.length, 3);
   assert.ok(caseCards[0].classList.contains('case-card-mobility'));
   assert.ok(caseCards[1].classList.contains('case-card-pharma'));

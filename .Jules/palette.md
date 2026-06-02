@@ -1,5 +1,3 @@
-## 2024-05-30 - Dynamic ARIA Labels and Screen Reader Support
-
-**Learning:** When creating interactive UI components with custom states (like an accordion or expandable card), simply setting an `aria-expanded` attribute is good, but screen reader users benefit greatly when the label of the trigger button also updates dynamically to reflect the next possible action (e.g. changing from "Expand" to "Collapse"). In addition, providing explicit `aria-label`s on icon-only interactive elements ensures the meaning is strictly conveyed, as `title` attributes alone aren't fully robust across all assistive tech. Also, keyboard accessibility requires providing mechanisms like a "Skip to main content" link to bypass large blocks of repetitive links (like main navigation).
-
-**Action:** Always ensure accordion-like elements toggle the action word in their button's `aria-label`. Always pair icon-only links with explicit `aria-label` attributes alongside `title` for robust fallback. Always consider how keyboard-only users will navigate the top of the page.
+## 2024-05-18 - Case Study Card False Affordance
+**Learning:** The case study cards have visual hover animations (glowing border, elevation) that strongly imply the whole card or header area is interactive, but only a tiny chevron button actually toggles the accordion. This is a false affordance that creates friction.
+**Action:** When a container visually responds to hover like a button, its entire semantic interactive area (e.g., the header) should be clickable to match user expectations. Moving the ARIA roles and click handlers from the tiny button to the full header wrapper solves this while preserving accessibility.

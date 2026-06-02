@@ -126,10 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var caseCards = document.querySelectorAll('.case-card');
     caseCards.forEach(function(card) {
         var btn = card.querySelector('.case-expand-btn');
+        var header = card.querySelector('.case-header');
 
         function setCaseCardExpanded(targetCard, isExpanded) {
             var targetBody = targetCard.querySelector('.case-body');
-            var targetBtn = targetCard.querySelector('.case-expand-btn');
+            var targetBtn = targetCard.querySelector('.case-header');
             targetCard.classList.toggle('expanded', isExpanded);
             if (targetBody) {
                 targetBody.style.maxHeight = isExpanded ? targetBody.scrollHeight + 'px' : '0px';
@@ -153,9 +154,15 @@ document.addEventListener('DOMContentLoaded', function() {
             setCaseCardExpanded(card, !isExpanded);
         }
 
-        if (btn) {
-            btn.addEventListener('click', function() {
+        if (header) {
+            header.addEventListener('click', function(e) {
                 toggleCaseCard();
+            });
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCaseCard();
+                }
             });
         }
     });
