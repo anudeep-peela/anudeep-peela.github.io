@@ -137,6 +137,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             if (targetBtn) {
                 targetBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                var currentLabel = targetBtn.getAttribute('aria-label') || '';
+                if (isExpanded && currentLabel.startsWith('Expand')) {
+                    targetBtn.setAttribute('aria-label', currentLabel.replace('Expand', 'Collapse'));
+                } else if (!isExpanded && currentLabel.startsWith('Collapse')) {
+                    targetBtn.setAttribute('aria-label', currentLabel.replace('Collapse', 'Expand'));
+                }
             }
         }
 
