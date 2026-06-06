@@ -61,6 +61,10 @@ async function runInteractionTests() {
   assert.ok(document.querySelector('.capability-grid').textContent.includes('Databricks, API workflows'));
   assert.ok(document.querySelector('.capability-grid').textContent.includes('stakeholder management'));
   assert.ok(document.querySelector('.domain-line'));
+  assert.strictEqual(document.querySelector('#writing-title').textContent, 'Notes on practical data and AI work.');
+  assert.ok(!document.querySelector('#writing').textContent.toLowerCase().includes('coming soon'));
+  assert.strictEqual(document.querySelector('#contact-title').textContent, 'Good technical conversations are always welcome.');
+  assert.ok(document.querySelector('.contact-actions a[href*="linkedin.com"]'));
   assert.ok(document.querySelector('.back-to-top'));
 
   const trackedSections = [...document.querySelectorAll('header.hero, main > section')];
