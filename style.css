@@ -549,15 +549,21 @@ p {
 }
 
 .capability-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.12);
 }
 
 .capability-grid article {
-  min-height: 260px;
+  grid-column: span 2;
+  min-height: 248px;
   padding: clamp(1.15rem, 2vw, 1.55rem);
   background: rgba(255, 255, 255, 0.055);
+}
+
+.capability-grid article:nth-child(4),
+.capability-grid article:nth-child(5) {
+  grid-column: span 3;
 }
 
 .capability-index {
@@ -567,7 +573,8 @@ p {
 }
 
 .capability-grid h3 {
-  margin-top: 3.2rem;
+  margin-top: 2.6rem;
+  line-height: 1.1;
 }
 
 .capability-grid p {
@@ -1029,6 +1036,12 @@ p {
   .capability-grid,
   .case-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capability-grid article,
+  .capability-grid article:nth-child(4),
+  .capability-grid article:nth-child(5) {
+    grid-column: span 1;
   }
 
   .case-card.featured {

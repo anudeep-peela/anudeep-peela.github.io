@@ -56,7 +56,10 @@ async function runInteractionTests() {
   assert.strictEqual(document.querySelectorAll('.life-item img').length, 2);
   assert.strictEqual(document.querySelectorAll('#offduty').length, 0);
   assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
-  assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 4);
+  assert.strictEqual(document.querySelector('#systems-title').textContent, 'Technical depth, practical judgment, and business translation.');
+  assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 5);
+  assert.ok(document.querySelector('.capability-grid').textContent.includes('Databricks, API workflows'));
+  assert.ok(document.querySelector('.capability-grid').textContent.includes('stakeholder management'));
   assert.ok(document.querySelector('.domain-line'));
   assert.ok(document.querySelector('.back-to-top'));
 
