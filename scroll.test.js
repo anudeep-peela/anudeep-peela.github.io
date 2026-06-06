@@ -22,6 +22,7 @@ async function runInteractionTests() {
   const { window } = dom;
   const { document } = window;
   const scrollCalls = [];
+  const windowScrollCalls = [];
 
   Object.defineProperty(window, 'innerWidth', { value: 390, configurable: true });
   window.requestAnimationFrame = (callback) => window.setTimeout(callback, 0);
@@ -34,6 +35,9 @@ async function runInteractionTests() {
   window.HTMLElement.prototype.scrollTo = function scrollTo(options) {
     scrollCalls.push(options);
     this.scrollLeft = options.left;
+  };
+  window.scrollTo = function scrollTo(options) {
+    windowScrollCalls.push(options);
   };
 
   window.eval(script);
@@ -50,6 +54,7 @@ async function runInteractionTests() {
   assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
   assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 4);
   assert.ok(document.querySelector('.domain-line'));
+  assert.ok(document.querySelector('.back-to-top'));
 
   const trackedSections = [...document.querySelectorAll('header.hero, main > section')];
   trackedSections.forEach((section, index) => {
@@ -68,10 +73,17 @@ async function runInteractionTests() {
   trackedSections.forEach((section, index) => {
     section.getBoundingClientRect = () => ({ top: index === 2 ? 10 : 1000 + index });
   });
+  Object.defineProperty(window, 'scrollY', { value: 500, configurable: true });
   window.dispatchEvent(new window.Event('scroll'));
   await new Promise((resolve) => window.setTimeout(resolve, 0));
   assert.strictEqual(document.querySelector('.main-nav a.active').textContent, 'Systems');
   assert.strictEqual(scrollCalls.length, scrollCallsAfterExperience + 1);
+  assert.ok(document.querySelector('.back-to-top').classList.contains('visible'));
+
+  document.querySelector('.back-to-top').click();
+  const backToTopCall = windowScrollCalls.pop();
+  assert.strictEqual(backToTopCall.top, 0);
+  assert.strictEqual(backToTopCall.behavior, 'smooth');
 
   const caseCards = [...document.querySelectorAll('.case-card')];
   const caseButtons = [...document.querySelectorAll('.case-expand-btn')];

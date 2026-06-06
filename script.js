@@ -24,6 +24,7 @@ if (typeof module !== 'undefined') {
 if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', function() {
     var progress = document.querySelector('.scroll-progress');
+    var backToTopButton = document.querySelector('.back-to-top');
     var revealItems = document.querySelectorAll('.section, .hero-copy, .portrait-card');
     var navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
     allSections = document.querySelectorAll('header.hero, main > section');
@@ -43,6 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!progress) return;
         var percent = cachedScrollable > 0 ? (window.scrollY / cachedScrollable) * 100 : 0;
         progress.style.width = Math.max(0, Math.min(100, percent)) + '%';
+    }
+
+    function updateBackToTopButton() {
+        if (!backToTopButton) return;
+        var shouldShow = window.scrollY > Math.max(360, window.innerHeight * 0.45);
+        backToTopButton.classList.toggle('visible', shouldShow);
+        backToTopButton.tabIndex = shouldShow ? 0 : -1;
+        backToTopButton.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
     }
 
     var activeSectionId = '';
@@ -80,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleScroll() {
         updateProgress();
+        updateBackToTopButton();
         highlightActiveNavLink();
     }
 
@@ -100,6 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     handleScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
