@@ -51,8 +51,9 @@ async function runInteractionTests() {
 
   assert.strictEqual(document.querySelectorAll('.main-nav a[href^="#"]').length, 5);
   assert.strictEqual(document.querySelector('.main-nav a[href="#about"]').textContent, 'About');
-  assert.strictEqual(document.querySelector('#about-title').textContent, 'Practical AI and data science for unclear, high-stakes questions.');
-  assert.strictEqual(document.querySelectorAll('.life-list div').length, 2);
+  assert.strictEqual(document.querySelector('#about-title').textContent, 'I like problems that need both clear thinking and careful engineering.');
+  assert.strictEqual(document.querySelectorAll('.life-item').length, 2);
+  assert.strictEqual(document.querySelectorAll('.life-item img').length, 2);
   assert.strictEqual(document.querySelectorAll('#offduty').length, 0);
   assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
   assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 4);
