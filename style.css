@@ -659,13 +659,23 @@ p {
   --case-accent: var(--green);
 }
 
-.case-card-pharma {
+.case-card-document {
   --case-tint: rgba(16, 42, 194, 0.065);
 }
 
-.case-card-automotive {
+.case-card-pricing {
   --case-tint: rgba(141, 85, 36, 0.07);
   --case-accent: #8d5524;
+}
+
+.case-card-quality {
+  --case-tint: rgba(83, 64, 160, 0.07);
+  --case-accent: #5340a0;
+}
+
+.case-card-industrial {
+  --case-tint: rgba(41, 101, 126, 0.075);
+  --case-accent: #29657e;
 }
 
 .case-header-left {
@@ -751,6 +761,51 @@ p {
   color: #fff;
 }
 
+.case-visible {
+  display: grid;
+  gap: 1.1rem;
+  padding: 0 clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.case-visible > p {
+  max-width: 920px;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.case-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--line);
+}
+
+.case-proof-grid div {
+  min-height: 132px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.case-proof-grid span {
+  display: block;
+  color: var(--case-accent);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.case-proof-grid p {
+  margin: 0.45rem 0 0;
+  color: var(--ink-2);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
 .case-body {
   max-height: 0;
   overflow: hidden;
@@ -822,6 +877,12 @@ p {
   .case-details-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  .case-proof-grid {
+    grid-template-columns: 1fr;
+  }
+  .case-proof-grid div {
+    min-height: auto;
   }
 }
 

@@ -91,10 +91,14 @@ async function runInteractionTests() {
 
   const caseCards = [...document.querySelectorAll('.case-card')];
   const caseButtons = [...document.querySelectorAll('.case-expand-btn')];
-  assert.strictEqual(caseCards.length, 3);
+  assert.strictEqual(caseCards.length, 5);
+  assert.ok(document.querySelector('#work').textContent.includes('anonymized to respect client and employer confidentiality'));
   assert.ok(caseCards[0].classList.contains('case-card-mobility'));
-  assert.ok(caseCards[1].classList.contains('case-card-pharma'));
-  assert.ok(caseCards[2].classList.contains('case-card-automotive'));
+  assert.ok(caseCards[1].classList.contains('case-card-document'));
+  assert.ok(caseCards[2].classList.contains('case-card-pricing'));
+  assert.ok(caseCards[3].classList.contains('case-card-quality'));
+  assert.ok(caseCards[4].classList.contains('case-card-industrial'));
+  assert.strictEqual(document.querySelectorAll('.case-proof-grid').length, 5);
   assert.strictEqual(document.querySelectorAll('[role="button"] button').length, 0);
 
   caseButtons[0].click();

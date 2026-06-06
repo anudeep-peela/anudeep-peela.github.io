@@ -210,14 +210,15 @@
         <section id="work" class="section work-section" aria-labelledby="work-title">
             <div class="section-heading">
                 <p class="eyebrow">Selected projects</p>
-                <h2 id="work-title">Selected project highlights.</h2>
+                <h2 id="work-title">Selected work, summarized with confidentiality in mind.</h2>
+                <p>These examples are anonymized to respect client and employer confidentiality. They focus on problem type, approach, tradeoffs, and the skills demonstrated.</p>
             </div>
             <div class="case-grid">
                 <article class="case-card case-card-mobility" id="case-staffing">
                     <div class="case-header">
                         <div class="case-header-left">
-                            <span class="case-kicker">Mobility Operations &amp; Workforce Planning</span>
-                            <h3>Demand-Pattern Staffing Optimizer</h3>
+                            <span class="case-kicker">Operational Planning &amp; Optimization</span>
+                            <h3>Demand-pattern staffing optimizer</h3>
                             <div class="case-stack">
                                 <span>PuLP</span>
                                 <span>Python</span>
@@ -230,38 +231,153 @@
                                 <span class="metric-val">45%</span>
                                 <span class="metric-desc">Utilization improvement</span>
                             </div>
-                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-staffing-details" aria-label="Expand Demand-Pattern Staffing Optimizer details">
+                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-staffing-details" aria-label="Expand Demand-pattern staffing optimizer details">
                                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
-                    
+
+                    <div class="case-visible">
+                        <p>Converted variable hourly demand into practical weekly staffing rosters for a multi-location operation.</p>
+                        <div class="case-proof-grid">
+                            <div><span>Problem</span><p>Coverage needs changed by hour, location, and role.</p></div>
+                            <div><span>Decision</span><p>Modeled service-level constraints instead of optimizing utilization alone.</p></div>
+                            <div><span>Outcome</span><p>Improved utilization while preserving wait-time coverage.</p></div>
+                        </div>
+                    </div>
+
                     <div class="case-body" id="case-staffing-details" aria-hidden="true">
                         <div class="case-body-inner">
-                            <p class="case-intro">Converted variable hourly demand into weekly staffing rosters for a multi-location mobility operation while preserving service coverage.</p>
+                            <p class="case-intro">The work required turning noisy operational demand into a planning tool that managers could actually use, not just an optimization output.</p>
                             <div class="case-details-grid">
                                 <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>Match operational roles to variable demand patterns without eroding service coverage.</p>
+                                    <h4>My role</h4>
+                                    <p>Framed the optimization problem, translated business rules into constraints, and generated roster recommendations.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Approach</h4>
-                                    <p>Modeled weekly staffing constraints in PuLP and generated practical rosters aligned with hourly pickup and return peaks.</p>
+                                    <h4>Tradeoffs</h4>
+                                    <p>Balanced utilization, coverage, operational simplicity, and stakeholder trust in the recommended schedules.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Impact</h4>
-                                    <p>Improved utilization by 45% while maintaining the target service threshold.</p>
+                                    <h4>Demonstrates</h4>
+                                    <p>Optimization, problem framing, constraint modeling, and decision support for real operating teams.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="case-card case-card-pharma" id="case-investigation">
+                <article class="case-card case-card-document" id="case-underwriting">
                     <div class="case-header">
                         <div class="case-header-left">
-                            <span class="case-kicker">Regulated Quality &amp; Investigation Intelligence</span>
-                            <h3>Quality Investigation Co-Pilot</h3>
+                            <span class="case-kicker">Document Intelligence &amp; Workflow Automation</span>
+                            <h3>Underwriting document extraction workflow</h3>
+                            <div class="case-stack">
+                                <span>Azure OpenAI</span>
+                                <span>Agents SDK</span>
+                                <span>Databricks</span>
+                                <span>Pydantic</span>
+                            </div>
+                        </div>
+                        <div class="case-header-right">
+                            <div class="case-metric-pill">
+                                <span class="metric-val">3,000+</span>
+                                <span class="metric-desc">Review hours projected</span>
+                            </div>
+                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-underwriting-details" aria-label="Expand Underwriting document extraction workflow details">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-visible">
+                        <p>Built a pre-production extraction workflow for complex review documents with confidence scoring and traceable outputs.</p>
+                        <div class="case-proof-grid">
+                            <div><span>Problem</span><p>Manual review was slow, repetitive, and sensitive to document variation.</p></div>
+                            <div><span>Decision</span><p>Used structured outputs and citations to support review rather than replace judgment.</p></div>
+                            <div><span>Outcome</span><p>Projected to reduce thousands of hours of manual review effort.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="case-body" id="case-underwriting-details" aria-hidden="true">
+                        <div class="case-body-inner">
+                            <p class="case-intro">The workflow focused on making AI output auditable enough for human reviewers to use confidently.</p>
+                            <div class="case-details-grid">
+                                <div class="case-detail-col">
+                                    <h4>My role</h4>
+                                    <p>Designed the extraction pipeline, schema outputs, confidence handling, and production-aware orchestration.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Tradeoffs</h4>
+                                    <p>Prioritized reliability, citation quality, reviewability, and controlled automation over black-box completion.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Demonstrates</h4>
+                                    <p>LLM workflow design, structured extraction, confidence scoring, and engineering for human-in-the-loop review.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="case-card case-card-pricing" id="case-pricing">
+                    <div class="case-header">
+                        <div class="case-header-left">
+                            <span class="case-kicker">Pricing Analytics &amp; Decision Systems</span>
+                            <h3>Pricing-grid decision engine</h3>
+                            <div class="case-stack">
+                                <span>Python</span>
+                                <span>SQL</span>
+                                <span>PySpark</span>
+                                <span>Scikit-learn</span>
+                            </div>
+                        </div>
+                        <div class="case-header-right">
+                            <div class="case-metric-pill">
+                                <span class="metric-val">Approved</span>
+                                <span class="metric-desc">Revenue opportunity</span>
+                            </div>
+                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-pricing-details" aria-label="Expand Pricing-grid decision engine details">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="case-visible">
+                        <p>Developed an elasticity-based pricing engine with guardrails for financial-product decisioning.</p>
+                        <div class="case-proof-grid">
+                            <div><span>Problem</span><p>Pricing changes needed to balance economics, demand response, and business constraints.</p></div>
+                            <div><span>Decision</span><p>Built guardrails for return and sales-decline risk instead of optimizing revenue alone.</p></div>
+                            <div><span>Outcome</span><p>Supported approval of a significant revenue opportunity.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="case-body" id="case-pricing-details" aria-hidden="true">
+                        <div class="case-body-inner">
+                            <p class="case-intro">The work translated statistical elasticity estimates into a decision system that business stakeholders could compare and approve.</p>
+                            <div class="case-details-grid">
+                                <div class="case-detail-col">
+                                    <h4>My role</h4>
+                                    <p>Built the modeling and optimization workflow, connected analysis to pricing grids, and communicated tradeoffs.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Tradeoffs</h4>
+                                    <p>Balanced upside, interpretability, sensitivity to assumptions, and conservative business guardrails.</p>
+                                </div>
+                                <div class="case-detail-col">
+                                    <h4>Demonstrates</h4>
+                                    <p>Statistical modeling, commercial judgment, scenario analysis, and executive decision support.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="case-card case-card-quality" id="case-investigation">
+                    <div class="case-header">
+                        <div class="case-header-left">
+                            <span class="case-kicker">Knowledge Retrieval &amp; Investigation Support</span>
+                            <h3>Investigation AI co-pilot</h3>
                             <div class="case-stack">
                                 <span>LangChain</span>
                                 <span>RAG</span>
@@ -272,71 +388,91 @@
                         <div class="case-header-right">
                             <div class="case-metric-pill">
                                 <span class="metric-val">90%</span>
-                                <span class="metric-desc">Faster historical analysis</span>
+                                <span class="metric-desc">Faster analysis</span>
                             </div>
-                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-investigation-details" aria-label="Expand Quality Investigation Co-Pilot details">
+                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-investigation-details" aria-label="Expand Investigation AI co-pilot details">
                                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
+
+                    <div class="case-visible">
+                        <p>Built a retrieval-assisted investigation workflow for regulated quality teams working with historical records.</p>
+                        <div class="case-proof-grid">
+                            <div><span>Problem</span><p>Teams needed faster access to relevant prior evidence during investigations.</p></div>
+                            <div><span>Decision</span><p>Combined hybrid retrieval with expert review loops for relevance and traceability.</p></div>
+                            <div><span>Outcome</span><p>Reduced historical-analysis time and achieved strong SME-rated relevance.</p></div>
+                        </div>
+                    </div>
+
                     <div class="case-body" id="case-investigation-details" aria-hidden="true">
                         <div class="case-body-inner">
-                            <p class="case-intro">Built a retrieval-assisted quality investigation co-pilot with human-reviewed evidence surfacing.</p>
+                            <p class="case-intro">The co-pilot was designed as investigation support, with evidence surfacing and human review kept central to the workflow.</p>
                             <div class="case-details-grid">
                                 <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>Quality teams needed faster access to relevant historical records during root-cause investigations.</p>
+                                    <h4>My role</h4>
+                                    <p>Built the retrieval workflow, structured evaluation loops, and aligned outputs to investigator needs.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Approach</h4>
-                                    <p>Combined hybrid retrieval, LangChain workflows, and expert review loops to surface relevant evidence.</p>
+                                    <h4>Tradeoffs</h4>
+                                    <p>Balanced speed, relevance, evidence traceability, and the need for domain experts to remain accountable.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Impact</h4>
-                                    <p>Reduced historical-analysis time by 90% and achieved 96% expert-rated relevance.</p>
+                                    <h4>Demonstrates</h4>
+                                    <p>Applied GenAI, retrieval evaluation, stakeholder adoption, and responsible human-in-the-loop design.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="case-card case-card-automotive" id="case-automotive">
+                <article class="case-card case-card-industrial" id="case-steam">
                     <div class="case-header">
                         <div class="case-header-left">
-                            <span class="case-kicker">Automotive Design &amp; CAD Automation</span>
-                            <h3>Engine Layout Optimizer</h3>
+                            <span class="case-kicker">Industrial ML &amp; Process Optimization</span>
+                            <h3>Industrial process recommendation model</h3>
                             <div class="case-stack">
-                                <span>Genetic Algorithms</span>
-                                <span>Python</span>
-                                <span>3D Geometry</span>
-                                <span>CAD Integration</span>
+                                <span>XGBoost</span>
+                                <span>SHAP</span>
+                                <span>KNN Benchmarking</span>
+                                <span>Sensor Data</span>
                             </div>
                         </div>
                         <div class="case-header-right">
                             <div class="case-metric-pill">
-                                <span class="metric-val">2 mo &rarr; 40 min</span>
-                                <span class="metric-desc">Virtual testing cycle</span>
+                                <span class="metric-val">20%+</span>
+                                <span class="metric-desc">Lift vs baseline</span>
                             </div>
-                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-automotive-details" aria-label="Expand Engine Layout Optimizer details">
+                            <button class="case-expand-btn" aria-expanded="false" aria-controls="case-steam-details" aria-label="Expand Industrial process recommendation model details">
                                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="case-body" id="case-automotive-details" aria-hidden="true">
+
+                    <div class="case-visible">
+                        <p>Delivered a recommendation model over high-dimensional industrial sensor data to improve process performance.</p>
+                        <div class="case-proof-grid">
+                            <div><span>Problem</span><p>Operational performance depended on many sensor signals and complex process behavior.</p></div>
+                            <div><span>Decision</span><p>Combined predictive modeling with explainability and best-performance benchmarking.</p></div>
+                            <div><span>Outcome</span><p>Beat an established process-control baseline by 20%+.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="case-body" id="case-steam-details" aria-hidden="true">
                         <div class="case-body-inner">
-                            <p class="case-intro">Automated automotive engine-component layout testing with a constraint-aware optimization engine and CAD-ready workflow.</p>
+                            <p class="case-intro">The project required making model recommendations understandable enough for operational stakeholders to inspect and act on.</p>
                             <div class="case-details-grid">
                                 <div class="case-detail-col">
-                                    <h4>Problem</h4>
-                                    <p>Mechanical packaging iterations required expensive physical testing across part placement, piping, and spatial constraints.</p>
+                                    <h4>My role</h4>
+                                    <p>Built the model workflow, analyzed feature effects, and benchmarked recommendations against strong operating baselines.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Approach</h4>
-                                    <p>Modeled collision, package-volume, pipe-length, and pressure constraints across seven parts using genetic algorithms.</p>
+                                    <h4>Tradeoffs</h4>
+                                    <p>Balanced predictive lift, interpretability, sensor reliability, and practical actionability in the operating environment.</p>
                                 </div>
                                 <div class="case-detail-col">
-                                    <h4>Impact</h4>
-                                    <p>Reduced physical-build testing cycles from about two months to 40 minutes of virtual testing.</p>
+                                    <h4>Demonstrates</h4>
+                                    <p>Production-aware ML, explainability, industrial analytics, and translating models into operational recommendations.</p>
                                 </div>
                             </div>
                         </div>
