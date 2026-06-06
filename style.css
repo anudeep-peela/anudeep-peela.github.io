@@ -368,14 +368,14 @@ p {
 .about-side {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-self: start;
   padding: clamp(1.25rem, 2.4vw, 1.75rem);
 }
 
 .life-list {
   display: grid;
   gap: 1px;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -397,6 +397,9 @@ p {
 }
 
 .life-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 1rem;
 }
 
