@@ -50,7 +50,10 @@ async function runInteractionTests() {
   });
 
   assert.strictEqual(document.querySelectorAll('.main-nav a[href^="#"]').length, 5);
-  assert.strictEqual(document.querySelector('.main-nav a[href="#offduty"]').textContent, 'Life');
+  assert.strictEqual(document.querySelector('.main-nav a[href="#about"]').textContent, 'About');
+  assert.strictEqual(document.querySelector('#about-title').textContent, 'Practical AI and data science for unclear, high-stakes questions.');
+  assert.strictEqual(document.querySelectorAll('.life-list div').length, 2);
+  assert.strictEqual(document.querySelectorAll('#offduty').length, 0);
   assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
   assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 4);
   assert.ok(document.querySelector('.domain-line'));
@@ -58,7 +61,7 @@ async function runInteractionTests() {
 
   const trackedSections = [...document.querySelectorAll('header.hero, main > section')];
   trackedSections.forEach((section, index) => {
-    section.getBoundingClientRect = () => ({ top: index === 1 ? 10 : 1000 + index });
+    section.getBoundingClientRect = () => ({ top: index === 2 ? 10 : 1000 + index });
   });
   window.dispatchEvent(new window.Event('scroll'));
   await new Promise((resolve) => window.setTimeout(resolve, 0));
@@ -71,7 +74,7 @@ async function runInteractionTests() {
   assert.strictEqual(scrollCalls.length, scrollCallsAfterExperience);
 
   trackedSections.forEach((section, index) => {
-    section.getBoundingClientRect = () => ({ top: index === 2 ? 10 : 1000 + index });
+    section.getBoundingClientRect = () => ({ top: index === 3 ? 10 : 1000 + index });
   });
   Object.defineProperty(window, 'scrollY', { value: 500, configurable: true });
   window.dispatchEvent(new window.Event('scroll'));
@@ -118,11 +121,9 @@ async function runInteractionTests() {
   assert.match(css, /flex:\s*0 0 40px/);
   assert.doesNotMatch(css, /order:\s*-1/);
   assert.match(css, /\.main-nav \.nav-social,\s*\n\s*\.main-nav \.nav-cv\s*\{\s*\n\s*display:\s*none/);
-  assert.ok(
-    css.lastIndexOf('@media (max-width: 980px) {\n  .offduty-grid') >
-      css.lastIndexOf('.offduty-grid {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));'),
-    'mobile Life grid override must follow the desktop grid declaration'
-  );
+  assert.match(css, /\.about-grid\s*\{\s*\n\s*display:\s*grid/);
+  assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.about-grid\s*\{\s*\n\s*grid-template-columns:\s*1fr/);
+  assert.doesNotMatch(css, /\.offduty-grid/);
 }
 
 runInteractionTests()
