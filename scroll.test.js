@@ -102,7 +102,7 @@ async function runInteractionTests() {
   assert.strictEqual(modal.getAttribute('aria-hidden'), 'true');
   assert.strictEqual(document.activeElement, noteCard);
 
-  const css = fs.readFileSync('./style.css', 'utf8');
+  const css = fs.readFileSync('./style.css', 'utf8').replace(/\r\n/g, '\n');
   assert.match(css, /flex:\s*0 0 40px/);
   assert.doesNotMatch(css, /order:\s*-1/);
   assert.match(css, /\.main-nav \.nav-social,\s*\n\s*\.main-nav \.nav-cv\s*\{\s*\n\s*display:\s*none/);
