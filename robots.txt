@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://anudeep-peela.github.io/sitemap.xml
+Sitemap: https://anudeep-peela.github.io/sitemap.txt
