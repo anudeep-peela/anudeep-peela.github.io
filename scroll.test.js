@@ -49,6 +49,9 @@ async function runInteractionTests() {
     assert.strictEqual(link.getAttribute('href'), 'Q2_2026_Anudeep_Peela_Data_Scientist_Resume.pdf');
   });
 
+  assert.strictEqual(document.title, 'Anudeep Peela | Senior Data Scientist at McKinsey | IIT Bombay');
+  assert.ok(document.querySelector('meta[name="description"]').content.includes('McKinsey and IIT Bombay'));
+
   assert.strictEqual(document.querySelectorAll('.main-nav a[href^="#"]').length, 5);
   assert.strictEqual(document.querySelector('.main-nav a[href="#about"]').textContent, 'About');
   assert.strictEqual(document.querySelector('#about-title').textContent, 'I like problems that need both clear thinking and careful engineering.');
