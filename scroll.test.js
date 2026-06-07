@@ -56,15 +56,15 @@ async function runInteractionTests() {
   assert.strictEqual(document.querySelectorAll('.life-item img').length, 2);
   assert.strictEqual(document.querySelectorAll('#offduty').length, 0);
   assert.strictEqual(document.querySelectorAll('.hero-meta span').length, 3);
-  assert.strictEqual(document.querySelector('#systems-title').textContent, 'Technical depth, practical judgment, and business translation.');
+  assert.strictEqual(document.querySelector('#systems-title').textContent, 'Technical depth with business ownership.');
   assert.strictEqual(document.querySelectorAll('.capability-grid article').length, 5);
   assert.ok(document.querySelector('.capability-grid').textContent.includes('Databricks, API workflows'));
   assert.ok(document.querySelector('.capability-grid').textContent.includes('stakeholder management'));
   assert.ok(document.querySelector('.domain-line'));
   assert.strictEqual(document.querySelector('#writing-title').textContent, 'Notes on practical data and AI work.');
-  assert.ok(document.querySelector('#writing').textContent.includes('A growing set of working notebooks'));
+  assert.ok(document.querySelector('#writing').textContent.includes('Notes on modeling, search, optimization'));
   assert.ok(!document.querySelector('#writing').textContent.toLowerCase().includes('coming soon'));
-  assert.strictEqual(document.querySelector('#contact-title').textContent, 'Good technical conversations are always welcome.');
+  assert.strictEqual(document.querySelector('#contact-title').textContent, 'Let us talk about data, AI, and systems.');
   assert.ok(document.querySelector('.contact-actions a[href*="linkedin.com"]'));
   assert.ok(document.querySelector('.back-to-top'));
 
@@ -100,7 +100,8 @@ async function runInteractionTests() {
   const caseCards = [...document.querySelectorAll('.case-card')];
   const caseButtons = [...document.querySelectorAll('.case-expand-btn')];
   assert.strictEqual(caseCards.length, 5);
-  assert.ok(document.querySelector('#work').textContent.includes('anonymized to respect client and employer confidentiality'));
+  assert.ok(document.querySelector('#work').textContent.includes('Selected projects with measurable impact'));
+  assert.ok(!document.querySelector('#work').textContent.toLowerCase().includes('confidentiality'));
   assert.ok(caseCards[0].classList.contains('case-card-mobility'));
   assert.ok(caseCards[1].classList.contains('case-card-document'));
   assert.ok(caseCards[2].classList.contains('case-card-pricing'));
