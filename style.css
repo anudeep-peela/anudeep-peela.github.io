@@ -109,8 +109,12 @@ a {
 .main-nav a.active {
   background: rgba(255, 255, 255, 0.7);
   color: var(--accent);
-  outline: none;
   box-shadow: 0 2px 8px rgba(18, 21, 26, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.main-nav a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .main-nav a.active {
@@ -253,8 +257,12 @@ p {
 
 .button:hover,
 .button:focus-visible {
-  outline: none;
   transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .button.primary:hover,
@@ -762,6 +770,11 @@ p {
   background: rgba(16, 42, 194, 0.1);
 }
 
+.case-expand-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .case-card.expanded .case-expand-btn {
   transform: rotate(180deg);
   background: var(--accent);
@@ -959,11 +972,16 @@ p {
   transform: translateY(0);
 }
 
-.back-to-top:hover,
+.back-to-top:hover {
+  background: #fff;
+  color: var(--accent-dark);
+}
+
 .back-to-top:focus-visible {
   background: #fff;
   color: var(--accent-dark);
-  outline: none;
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .hidden {
@@ -1346,6 +1364,11 @@ p {
   background: rgba(18, 21, 26, 0.08);
   color: var(--accent);
   transform: scale(1.05);
+}
+
+.modal-close-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .modal-close-btn:active {
