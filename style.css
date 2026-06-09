@@ -105,11 +105,15 @@ a {
 }
 
 .main-nav a:hover,
-.main-nav a:focus-visible,
 .main-nav a.active {
   background: rgba(255, 255, 255, 0.7);
   color: var(--accent);
-  outline: none;
+  box-shadow: 0 2px 8px rgba(18, 21, 26, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.main-nav a:focus-visible {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--accent);
   box-shadow: 0 2px 8px rgba(18, 21, 26, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
@@ -253,7 +257,6 @@ p {
 
 .button:hover,
 .button:focus-visible {
-  outline: none;
   transform: translateY(-2px);
 }
 
@@ -963,7 +966,6 @@ p {
 .back-to-top:focus-visible {
   background: #fff;
   color: var(--accent-dark);
-  outline: none;
 }
 
 .hidden {
@@ -1489,7 +1491,12 @@ p {
 
 /* Accessibility Focus States */
 .case-card:focus-visible,
-.article-card:focus-visible {
+.article-card:focus-visible,
+.main-nav a:focus-visible,
+.button:focus-visible,
+.back-to-top:focus-visible,
+.modal-close-btn:focus-visible,
+.case-expand-btn:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
