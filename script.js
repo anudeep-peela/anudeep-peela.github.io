@@ -156,6 +156,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             if (targetBtn) {
                 targetBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+                var currentLabel = targetBtn.getAttribute('aria-label');
+                if (currentLabel) {
+                    targetBtn.setAttribute(
+                        'aria-label',
+                        isExpanded
+                            ? currentLabel.replace(/^Expand/, 'Collapse')
+                            : currentLabel.replace(/^Collapse/, 'Expand')
+                    );
+                }
             }
         }
 
