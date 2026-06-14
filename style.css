@@ -113,6 +113,11 @@ a {
   box-shadow: 0 2px 8px rgba(18, 21, 26, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+.main-nav a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .main-nav a.active {
   background: var(--accent);
   color: #fff;
@@ -255,6 +260,11 @@ p {
 .button:focus-visible {
   outline: none;
   transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .button.primary:hover,
@@ -964,6 +974,11 @@ p {
   background: #fff;
   color: var(--accent-dark);
   outline: none;
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .hidden {
