@@ -116,10 +116,13 @@ async function runInteractionTests() {
   caseButtons[0].click();
   assert.strictEqual(caseButtons[0].getAttribute('aria-expanded'), 'true');
   assert.strictEqual(caseCards[0].querySelector('.case-body').getAttribute('aria-hidden'), 'false');
+  assert.ok(caseButtons[0].getAttribute('aria-label').startsWith('Collapse'));
 
   caseButtons[1].click();
   assert.strictEqual(caseButtons[0].getAttribute('aria-expanded'), 'false');
   assert.strictEqual(caseButtons[1].getAttribute('aria-expanded'), 'true');
+  assert.ok(caseButtons[0].getAttribute('aria-label').startsWith('Expand'));
+  assert.ok(caseButtons[1].getAttribute('aria-label').startsWith('Collapse'));
 
   const noteCard = document.querySelector('.article-card[data-essay]');
   noteCard.click();
