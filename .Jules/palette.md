@@ -3,3 +3,8 @@
 **Learning:** When creating interactive UI components with custom states (like an accordion or expandable card), simply setting an `aria-expanded` attribute is good, but screen reader users benefit greatly when the label of the trigger button also updates dynamically to reflect the next possible action (e.g. changing from "Expand" to "Collapse"). In addition, providing explicit `aria-label`s on icon-only interactive elements ensures the meaning is strictly conveyed, as `title` attributes alone aren't fully robust across all assistive tech. Also, keyboard accessibility requires providing mechanisms like a "Skip to main content" link to bypass large blocks of repetitive links (like main navigation).
 
 **Action:** Always ensure accordion-like elements toggle the action word in their button's `aria-label`. Always pair icon-only links with explicit `aria-label` attributes alongside `title` for robust fallback. Always consider how keyboard-only users will navigate the top of the page.
+
+## 2024-05-31 - Toggling action words in ARIA labels for accordions
+
+**Learning:** When accordion-like interactive elements change state, updating `aria-expanded` is necessary but not always sufficient for clarity. Dynamically toggling the action word in the `aria-label` (e.g., changing from 'Expand details' to 'Collapse details') accurately reflects the next possible action for screen reader users and creates a much more intuitive experience.
+**Action:** Always dynamically toggle the action word in `aria-label` attributes for accordions and similar toggle elements, using defensive checks like `hasAttribute()` to avoid replacing missing attributes with unexpected values.
