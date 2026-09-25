@@ -15,6 +15,7 @@ assert.strictEqual(index, 1);
 async function runInteractionTests() {
   const html = fs.readFileSync('./index.html', 'utf8');
   const script = fs.readFileSync('./script.js', 'utf8');
+  const themeScript = fs.readFileSync('./theme.js', 'utf8');
   const dom = new JSDOM(html, {
     runScripts: 'outside-only',
     url: 'https://anudeep-peela.github.io/'
@@ -26,6 +27,11 @@ async function runInteractionTests() {
 
   Object.defineProperty(window, 'innerWidth', { value: 390, configurable: true });
   window.requestAnimationFrame = (callback) => window.setTimeout(callback, 0);
+  window.matchMedia = () => ({
+    matches: false,
+    addEventListener() {},
+    addListener() {}
+  });
   window.IntersectionObserver = class {
     observe(element) {
       element.classList.add('visible');
@@ -40,6 +46,7 @@ async function runInteractionTests() {
     windowScrollCalls.push(options);
   };
 
+  window.eval(themeScript);
   window.eval(script);
   await new Promise((resolve) => window.setTimeout(resolve, 0));
 
@@ -53,6 +60,16 @@ async function runInteractionTests() {
   assert.ok(document.querySelector('meta[name="description"]').content.includes('McKinsey and IIT Bombay'));
 
   assert.strictEqual(document.querySelectorAll('.main-nav a[href^="#"]').length, 5);
+  const themeToggle = document.querySelector('.theme-toggle');
+  assert.ok(themeToggle);
+  assert.strictEqual(document.documentElement.dataset.theme, 'light');
+  assert.strictEqual(themeToggle.getAttribute('aria-pressed'), 'false');
+  assert.strictEqual(themeToggle.getAttribute('aria-label'), 'Switch to dark mode');
+  themeToggle.click();
+  assert.strictEqual(document.documentElement.dataset.theme, 'dark');
+  assert.strictEqual(window.localStorage.getItem('theme-preference'), 'dark');
+  assert.strictEqual(themeToggle.getAttribute('aria-pressed'), 'true');
+  assert.strictEqual(themeToggle.getAttribute('aria-label'), 'Switch to light mode');
   assert.strictEqual(document.querySelector('.main-nav a[href="#about"]').textContent, 'About');
   assert.strictEqual(document.querySelector('#about-title').textContent, 'I like problems that need both clear thinking and careful engineering.');
   assert.strictEqual(document.querySelectorAll('.life-item').length, 2);
@@ -141,9 +158,42 @@ async function runInteractionTests() {
   assert.match(css, /\.about-grid\s*\{\s*\n\s*display:\s*grid/);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.about-grid\s*\{\s*\n\s*grid-template-columns:\s*1fr/);
   assert.doesNotMatch(css, /\.offduty-grid/);
+  assert.match(css, /\[data-theme="dark"\]/);
+  assert.match(css, /\.theme-toggle\s*\{/);
+}
+
+function createThemeDom(storedTheme, systemThemeIsDark) {
+  const html = fs.readFileSync('./index.html', 'utf8');
+  const themeScript = fs.readFileSync('./theme.js', 'utf8');
+  const dom = new JSDOM(html, {
+    runScripts: 'outside-only',
+    url: 'https://anudeep-peela.github.io/'
+  });
+  const { window } = dom;
+
+  window.matchMedia = () => ({
+    matches: systemThemeIsDark,
+    addEventListener() {},
+    addListener() {}
+  });
+  if (storedTheme) window.localStorage.setItem('theme-preference', storedTheme);
+  window.eval(themeScript);
+  window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
+  return window;
+}
+
+function runThemeTests() {
+  const systemDarkWindow = createThemeDom(null, true);
+  assert.strictEqual(systemDarkWindow.document.documentElement.dataset.theme, 'dark');
+
+  const savedLightWindow = createThemeDom('light', true);
+  assert.strictEqual(savedLightWindow.document.documentElement.dataset.theme, 'light');
+  savedLightWindow.document.querySelector('.theme-toggle').click();
+  assert.strictEqual(savedLightWindow.localStorage.getItem('theme-preference'), 'dark');
 }
 
 runInteractionTests()
+  .then(runThemeTests)
   .then(() => console.log('portfolio interaction tests passed'))
   .catch((error) => {
     console.error(error);
