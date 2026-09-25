@@ -641,6 +641,123 @@ p {
   text-transform: uppercase;
 }
 
+.credentials-section {
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+  scroll-margin-top: 96px;
+}
+
+.credentials-heading {
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 250px));
+  justify-content: center;
+  gap: 1rem;
+}
+
+.credential-card {
+  min-height: 460px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.credential-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 460px;
+  padding: 1.5rem;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.credential-link:hover,
+.credential-link:focus-visible {
+  background: var(--nav-highlight);
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.credential-badge {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.credential-issuer {
+  margin-top: 1.25rem;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.credential-card h3 {
+  margin-top: 0.55rem;
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.credential-card h3 span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.credential-highlights {
+  display: grid;
+  gap: 0.45rem;
+  width: 100%;
+  margin: 1rem 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  list-style: none;
+  text-align: left;
+}
+
+.credential-highlights li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.credential-highlights li::before {
+  position: absolute;
+  top: 0.42rem;
+  left: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+}
+
+.credential-cta {
+  display: inline-flex;
+  gap: 0.45rem;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+@media (max-width: 600px) {
+  .credentials-grid {
+    grid-template-columns: minmax(0, 250px);
+  }
+}
+
 .case-grid {
   display: flex;
   flex-direction: column;
@@ -1036,7 +1153,7 @@ p {
     top: 12px;
     bottom: auto;
     width: calc(100vw - 24px);
-    justify-content: flex-start;
+    justify-content: center;
     overflow-x: auto;
   }
 
@@ -1186,6 +1303,7 @@ p {
     width: 34px;
     min-height: 34px;
   }
+
 }
 
 /* Writing & Thinking Section Styles */

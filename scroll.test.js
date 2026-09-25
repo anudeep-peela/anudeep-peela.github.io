@@ -81,6 +81,13 @@ async function runInteractionTests() {
   assert.ok(document.querySelector('.capability-grid').textContent.includes('Databricks, API workflows'));
   assert.ok(document.querySelector('.capability-grid').textContent.includes('stakeholder management'));
   assert.ok(document.querySelector('.domain-line'));
+  assert.strictEqual(document.querySelectorAll('img.credential-badge').length, 2);
+  assert.strictEqual(document.querySelectorAll('.credential-card').length, 2);
+assert.strictEqual(document.querySelector('#credentials-title').textContent, 'Professional credentials.');
+  assert.strictEqual(document.querySelectorAll('.credential-link').length, 2);
+assert.strictEqual(document.querySelectorAll('.credential-highlights').length, 2);
+assert.strictEqual(document.querySelectorAll('.credential-highlights li').length, 4);
+  assert.ok(document.querySelector('meta[http-equiv="Content-Security-Policy"]').content.includes('https://images.credly.com'));
   assert.strictEqual(document.querySelector('#writing-title').textContent, 'Notes on practical data and AI work.');
   assert.ok(document.querySelector('#writing').textContent.includes('Notes on modeling, search, optimization'));
   assert.ok(!document.querySelector('#writing').textContent.toLowerCase().includes('coming soon'));
@@ -162,6 +169,7 @@ async function runInteractionTests() {
   assert.match(css, /\.theme-toggle\s*\{/);
   assert.match(css, /--button-primary-bg:/);
   assert.match(css, /--button-primary-text:/);
+  assert.match(css, /\.credentials-grid\s*\{/);
 }
 
 function createThemeDom(storedTheme, systemThemeIsDark) {
