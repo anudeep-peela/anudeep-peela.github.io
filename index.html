@@ -8,7 +8,7 @@
     <meta name="author" content="Anudeep Peela">
     <meta name="robots" content="index, follow">
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://anudeep-peela.github.io; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://anudeep-peela.github.io https://images.credly.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://anudeep-peela.github.io/">
     <meta property="og:type" content="website">
@@ -21,6 +21,7 @@
     <meta name="twitter:description" content="Senior data science work across GenAI, machine learning, optimization, retrieval, pricing, and production analytics. McKinsey and IIT Bombay.">
     <meta name="twitter:image" content="https://anudeep-peela.github.io/Anudeep_Peela.jpg">
     <title>Anudeep Peela | Senior Data Scientist at McKinsey | IIT Bombay</title>
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -81,6 +82,9 @@
         <a href="#systems">Systems</a>
         <a href="#work">Projects</a>
         <a href="#writing">Writing</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
         <a href="https://github.com/anudeep-peela" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" class="nav-social"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
         <a href="https://www.linkedin.com/in/anudeep-peela" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn" class="nav-social"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
         <a href="https://medium.com/@anudeeppeela9" target="_blank" rel="noopener noreferrer" title="Medium" aria-label="Medium" class="nav-social"><i class="fa-brands fa-medium" aria-hidden="true"></i></a>
@@ -223,6 +227,40 @@
                 <article><span class="capability-index">05</span><h3>Business &amp; Communication</h3><p>Problem framing, stakeholder management, executive communication, technical documentation, tradeoff analysis, adoption planning, and translating analysis into decisions.</p></article>
             </div>
             <p class="domain-line"><span>Applied across</span> Financial services &middot; Manufacturing &middot; Healthcare &middot; Mobility &middot; Automotive &middot; Regulated operations</p>
+        </section>
+
+        <section id="credentials" class="section credentials-section" aria-labelledby="credentials-title">
+            <div class="section-heading credentials-heading">
+                <p class="eyebrow">Certifications &amp; continuing learning</p>
+                <h2 id="credentials-title">Professional credentials.</h2>
+                <p>A growing record of verified technical credentials across AI, data, and engineering&mdash;selected for practical depth, responsible delivery, and real-world impact.</p>
+            </div>
+            <div class="credentials-grid" role="group" aria-label="Professional credentials">
+                <article class="credential-card" aria-label="Claude Certified Developer - Foundations badge">
+                    <a class="credential-link" href="https://www.credly.com/badges/62c297a6-ccca-4e2a-a515-13d82018dd01/embedded" target="_blank" rel="noopener noreferrer">
+                        <img class="credential-badge" src="https://images.credly.com/images/f101c6ac-8a2d-4220-b381-70e3e6c364e3/blob" alt="Claude Certified Developer - Foundations badge" width="150" height="150">
+                        <span class="credential-issuer">Anthropic</span>
+                        <h3>Claude Certified Developer <span>Foundations</span></h3>
+                        <ul class="credential-highlights">
+                            <li>Build and ship Claude applications, agents, and MCP-enabled tools.</li>
+                            <li>Apply secure integration, context engineering, evaluation, and debugging.</li>
+                        </ul>
+                        <span class="credential-cta">Verify on Credly <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                    </a>
+                </article>
+                <article class="credential-card" aria-label="Claude Certified Architect - Professional badge">
+                    <a class="credential-link" href="https://www.credly.com/badges/8333eff5-f7ed-4537-929b-5b62275cc0d0/embedded" target="_blank" rel="noopener noreferrer">
+                        <img class="credential-badge" src="https://images.credly.com/images/7583afbc-4aab-4c7d-8af4-d9af72786ab3/blob" alt="Claude Certified Architect - Professional badge" width="150" height="150">
+                        <span class="credential-issuer">Anthropic</span>
+                        <h3>Claude Certified Architect <span>Professional</span></h3>
+                        <ul class="credential-highlights">
+                            <li>Design enterprise-scale Claude deployments and integration architectures.</li>
+                            <li>Lead governance, risk management, optimization, and stakeholder alignment.</li>
+                        </ul>
+                        <span class="credential-cta">Verify on Credly <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+                    </a>
+                </article>
+            </div>
         </section>
 
         <section id="work" class="section work-section" aria-labelledby="work-title">
