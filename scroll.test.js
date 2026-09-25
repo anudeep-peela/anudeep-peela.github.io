@@ -160,6 +160,8 @@ async function runInteractionTests() {
   assert.doesNotMatch(css, /\.offduty-grid/);
   assert.match(css, /\[data-theme="dark"\]/);
   assert.match(css, /\.theme-toggle\s*\{/);
+  assert.match(css, /--button-primary-bg:/);
+  assert.match(css, /--button-primary-text:/);
 }
 
 function createThemeDom(storedTheme, systemThemeIsDark) {
